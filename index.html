@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christopher &amp; Jhohanna - Wedding Invitation</title>
+    <title>John &amp; Babes - Wedding Invitation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,29 +19,20 @@
             --dark-green: #2c423f;
             --gold: #c8a97e;
             --light-gold: #e4d4c3;
+            --pastel-pink: #EFCFD4;
         }
 
-        body::-webkit-scrollbar {
-            display: none;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        html,
         body {
-            height: 100%;
-            overflow: hidden;
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--cream);
-            scroll-behavior: smooth;
-            overflow-y: scroll;
+            background-color: var(--pastel-pink);
+            color: var(--dark-green);
             overflow-x: hidden;
-        }
-
-        html::-webkit-scrollbar {
-            width: 0;
-        }
-
-        body::-webkit-scrollbar {
-            width: 0;
         }
 
         .heading-font {
@@ -56,12 +47,7 @@
             font-family: 'Dancing Script', cursive;
         }
 
-        /* Smooth scrolling for the entire page */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Elegant animations */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -74,38 +60,30 @@
             }
         }
 
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
             }
 
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
+            50% {
+                transform: translateY(-15px) rotate(5deg);
             }
 
-            to {
-                opacity: 1;
-                transform: translateX(0);
+            100% {
+                transform: translateY(0px) rotate(0deg);
             }
         }
 
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
             }
 
-            to {
-                opacity: 1;
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
                 transform: scale(1);
             }
         }
@@ -114,24 +92,187 @@
             animation: fadeInUp 1s ease-out forwards;
         }
 
-        .animate-fade-in-left {
-            animation: fadeInLeft 1s ease-out forwards;
+        .animate-float {
+            animation: float 8s ease-in-out infinite;
         }
 
-        .animate-fade-in-right {
-            animation: fadeInRight 1s ease-out forwards;
+        .animate-pulse-slow {
+            animation: pulse 4s ease-in-out infinite;
         }
 
-        .animate-zoom-in {
-            animation: zoomIn 0.8s ease-out forwards;
+        /* Floral elements */
+        .floral-frame {
+            position: relative;
+            padding: 2rem;
         }
 
-        /* Initially hide animated elements */
-        .animate-on-scroll {
+        .floral-frame::before,
+        .floral-frame::after {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        .floral-frame::before {
+            top: 0;
+            left: 0;
+            background-image: url('images/no_bg/flower-without-stem-white_pink.png');
+        }
+
+        .floral-frame::after {
+            bottom: 0;
+            right: 0;
+            background-image: url('images/no_bg/flower-without-stem-white_yellow.png');
+            transform: rotate(180deg);
+        }
+
+        .floral-decoration {
+            position: absolute;
+            z-index: 1;
+            opacity: 1;
+            pointer-events: none;
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+        }
+
+        .floral-decoration img {
+            mix-blend-mode: multiply;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        .floral-decoration-small {
+            width: 80px;
+            height: 80px;
+        }
+
+        .floral-decoration-medium {
+            width: 120px;
+            height: 120px;
+        }
+
+        .floral-decoration-large {
+            width: 180px;
+            height: 180px;
+        }
+
+        .floral-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.55;
+            z-index: 0;
+            background-color: #e4cfb3;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Button styles */
+        .elegant-btn {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+            color: var(--dark-green);
+            transition: all 0.3s ease;
+            border: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .elegant-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(200, 169, 126, 0.3);
+        }
+
+        .elegant-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--gold) 100%);
             opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
         }
 
-        /* Gallery carousel */
+        .elegant-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Card styles */
+        .elegant-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 169, 126, 0.2);
+            box-shadow: 0 8px 32px rgba(44, 66, 63, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Countdown timer */
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 15px 10px;
+            min-width: 80px;
+            box-shadow: 0 4px 15px rgba(44, 66, 63, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Floral divider */
+        .floral-divider {
+            position: relative;
+            height: 40px;
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floral-divider::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            z-index: 1;
+        }
+
+        .floral-divider img {
+            mix-blend-mode: multiply;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+            height: 40px;
+            width: auto;
+        }
+
+        /* Gallery */
         .gallery-container {
             position: relative;
             overflow: hidden;
@@ -204,656 +345,815 @@
             transform: scale(1.2);
         }
 
-        /* Elegant button styles */
-        .elegant-btn {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
-            color: var(--dark-green);
-            transition: all 0.3s ease;
-            border: none;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        .elegant-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(200, 169, 126, 0.3);
-        }
-
-        /* Elegant card styles */
-        .elegant-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(200, 169, 126, 0.2);
-            box-shadow: 0 8px 32px rgba(44, 66, 63, 0.08);
-        }
-
-        /* Floral divider */
-        .floral-divider {
+        /* Updated couple name wrapper */
+        .couple-name-wrapper {
             position: relative;
-            height: 40px;
-            margin: 40px 0;
-        }
-
-        .floral-divider::before {
-            content: "❀";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: var(--gold);
-            background: var(--cream);
-            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 3rem;
+            margin: 2rem 0;
+            background-image: url('images/no_bg/couple-name-inside.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
             z-index: 2;
+            min-height: 300px;
         }
 
-        .floral-divider::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            z-index: 1;
-        }
-
-        /* Elegant border */
-        .elegant-border {
-            position: relative;
-        }
-
-        .elegant-border::before {
+        .couple-name-wrapper::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-        }
-
-        .elegant-border::after {
-            content: "";
-            position: absolute;
             bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            background-image: url('images/no_bg/couple-name-inside.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            z-index: -1;
         }
 
-        /* Countdown timer */
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            padding: 15px 10px;
-            min-width: 80px;
-            box-shadow: 0 4px 15px rgba(44, 66, 63, 0.1);
-        }
-
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--dark-green);
-        }
-
-        .countdown-label {
-            font-size: 0.8rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* QR Code Styling */
-        .qr-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .qr-code {
-            width: 250px;
-            height: 250px;
-            background-color: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .qr-code img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .gcash-logo {
-            width: 120px;
-            margin-bottom: 1rem;
-        }
-
-        /* Enhanced smooth scrolling for anchor links */
-        a[href^="#"] {
-            transition: all 0.3s ease;
-        }
-
-        /* Custom smooth scrolling for the gift button */
-        .gift-btn {
-            position: relative;
+        /* Prevent body scroll when invitation is active */
+        body.invitation-active {
             overflow: hidden;
+            height: 100vh;
         }
 
-        .gift-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+        /* Initially hide invitation content */
+        #invitationContent {
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        .gift-btn:active::after {
-            width: 300px;
-            height: 300px;
+        #invitationContent.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Premium typography enhancements */
-        .premium-text {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            letter-spacing: 0.5px;
+        /* Invitation exit animations */
+        #invitation.exiting {
+            opacity: 0;
+            transform: translateY(-20px);
         }
 
-        .premium-heading {
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            letter-spacing: 1px;
+        #invitationContent.exiting {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        /* Transition overlay */
+        #transitionOverlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-out;
+        }
+
+        #transitionOverlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        #transitionOverlay.exiting {
+            opacity: 0;
+        }
+
+        /* Hero section entrance animation */
+        #hero.entering {
+            animation: heroEntrance 1s ease-out 0.8s both;
+        }
+
+        @keyframes heroEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Couple name animations */
+        .couple-name-wrapper h1 {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        body #invitation {
+            background-color: var(--pastel-pink) !important;
+        }
+
+        .couple-name-wrapper h1.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for each name */
+        .couple-name-wrapper h1:nth-child(1).animate-in {
+            transition-delay: 0.2s;
+        }
+
+        .couple-name-wrapper h1:nth-child(2).animate-in {
+            transition-delay: 0.4s;
+        }
+
+        .couple-name-wrapper h1:nth-child(3).animate-in {
+            transition-delay: 0.6s;
+        }
+
+        /* NEW: Hide main content initially */
+        #mainContent {
+            display: none;
         }
 
         /* Mobile optimizations */
         @media (max-width: 768px) {
-            .mobile-padding {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-
-            .mobile-margin {
-                margin-left: 1.5rem;
-                margin-right: 1.5rem;
-            }
-
-            .mobile-text-lg {
-                font-size: 1.125rem;
-                line-height: 1.6;
-            }
-
-            .mobile-text-xl {
-                font-size: 1.25rem;
-                line-height: 1.5;
-            }
-
-            .mobile-heading {
-                font-size: 2.5rem;
-                line-height: 1.2;
+            .couple-name-wrapper {
+                min-height: 250px;
+                padding: 3rem 2rem;
             }
         }
     </style>
 </head>
 
-<body class="bg-[#faf7f2]">
-    <!-- Hero Section -->
-    <section id="hero"
-        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#faf7f2] to-[#e8f0e6] relative overflow-hidden mobile-padding">
-        <!-- Background pattern -->
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
-            style="background-image: url('data:image/svg+xml,<svg width=\" 60\" height=\"60\" viewBox=\"0 0 60 60\"
-            xmlns=\"http://www.w3.org/2000/svg\">
-            <g fill=\"none\" fill-rule=\"evenodd\">
-                <g fill=\"%232c423f\" fill-opacity=\"0.4\">
-                    <path d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6
-                        34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\" />
-                </g>
-            </g></svg>');">
+<body>
+
+    <!-- You Are Invited Section -->
+    <section id="invitation"
+        class="h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 fixed inset-0 z-50 transition-all duration-1000 ease-in-out">
+        <div class="floral-bg"></div>
+
+        <!-- Floral decorations -->
+        <div class="floral-decoration floral-decoration-large animate-float" style="top: 15%; left: 5%;">
+            <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+        </div>
+        <div class="floral-decoration floral-decoration-medium animate-float"
+            style="bottom: 20%; right: 8%; animation-delay: 1s;">
+            <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration" class="w-full h-full">
+        </div>
+        <div class="floral-decoration floral-decoration-small animate-float"
+            style="top: 25%; right: 10%; animation-delay: 2s;">
+            <img src="images/no_bg/flower-without-stem-white_yellow.png" alt="Floral decoration" class="w-full h-full">
         </div>
 
-        <div class="text-center px-4 animate-fade-in-up max-w-4xl mx-auto">
-            <div class="floral-divider mb-8"></div>
-            <h1
-                class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide premium-heading mobile-heading">
-                Christopher</h1>
-            <h1
-                class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide premium-heading mobile-heading">
-                <span class="text-[#c8a97e] elegant-script">&amp;</span>
-            </h1>
-            <h1
-                class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide premium-heading mobile-heading">
-                Jhohanna</h1>
-            <div class="w-32 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-8"></div>
-            <p class="script-font text-xl md:text-2xl text-[#5a716e] mb-2 tracking-wider premium-text mobile-text-lg">
-                Together with our families, we
-                invite you to celebrate our marriage</p>
-            <p class="script-font text-2xl md:text-4xl text-[#2c423f] mb-8 mt-4 premium-text mobile-text-xl">January 4,
-                2026</p>
-
-            <!-- Countdown Timer -->
-            <div class="flex justify-center space-x-4 mt-12 mb-8">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Seconds</div>
-                </div>
+        <div class="text-center px-4 max-w-4xl mx-auto relative z-10 transition-all duration-1000 ease-in-out"
+            id="invitationContent">
+            <div class="floral-divider mb-6 lg:mb-8">
+                <img src="images/no_bg/flower-without-stem-bleach_white_light_red.png" alt="Floral divider">
             </div>
 
-            <a href="#gift"
-                class="elegant-btn gift-btn px-10 py-4 rounded-full text-lg font-medium tracking-wide inline-block mt-4">
-                Gift Registry
-            </a>
-        </div>
-
-        <!-- Decorative corner elements -->
-        <div class="absolute top-10 left-10 w-24 h-24 opacity-10">
-            <svg viewBox="0 0 100 100" fill="currentColor" class="text-[#2c423f]">
-                <path d="M50,10 C70,10 90,25 90,50 C90,75 70,90 50,90 C30,90 10,75 10,50 C10,25 30,10 50,10 Z"
-                    fill="none" stroke="currentColor" stroke-width="2" />
-            </svg>
-        </div>
-        <div class="absolute bottom-10 right-10 w-20 h-20 opacity-10">
-            <svg viewBox="0 0 100 100" fill="currentColor" class="text-[#2c423f]">
-                <path d="M50,10 C70,10 90,25 90,50 C90,75 70,90 50,90 C30,90 10,75 10,50 C10,25 30,10 50,10 Z"
-                    fill="none" stroke="currentColor" stroke-width="2" />
-            </svg>
-        </div>
-    </section>
-
-    <!-- Photo Gallery Section -->
-    <section id="gallery" class="py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
-        <div class="max-w-6xl mx-auto relative z-10">
             <h2
-                class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4 animate-on-scroll premium-heading">
-                Our Story in
-                Pictures</h2>
-            <div class="w-24 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-8"></div>
+                class="elegant-script text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#c8a97e] mb-6 md:mb-8 leading-tight">
+                You Are Invited
+            </h2>
+
+            <div class="floral-divider my-6 lg:my-8">
+                <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral divider">
+            </div>
+
             <p
-                class="script-font text-center text-[#5a716e] max-w-2xl mx-auto mb-16 animate-on-scroll premium-text mobile-text-lg">
-                Capturing the
-                moments that led us to this beautiful day</p>
-
-            <div class="gallery-container elegant-card rounded-2xl overflow-hidden animate-on-scroll mobile-margin">
-                <div class="gallery-track" id="galleryTrack">
-                    <div class="gallery-slide"
-                        style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
-                    </div>
-                    <div class="gallery-slide"
-                        style="background-image: url('https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
-                    </div>
-                    <div class="gallery-slide"
-                        style="background-image: url('https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
-                    </div>
-                    <div class="gallery-slide"
-                        style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
-                    </div>
-                    <div class="gallery-slide"
-                        style="background-image: url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
-                    </div>
-                </div>
-                <button class="gallery-nav gallery-prev">
-                    <i class="fas fa-chevron-left text-[#2c423f]"></i>
-                </button>
-                <button class="gallery-nav gallery-next">
-                    <i class="fas fa-chevron-right text-[#2c423f]"></i>
-                </button>
-                <div class="gallery-dots" id="galleryDots">
-                    <!-- Dots will be generated by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Details Section -->
-    <section id="details" class="py-24 px-4 bg-gradient-to-br from-[#e8f0e6] to-[#faf7f2] relative mobile-padding">
-        <div class="max-w-4xl mx-auto relative z-10">
-            <h2
-                class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4 animate-on-scroll premium-heading">
-                Wedding
-                Celebration</h2>
-            <div class="w-24 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-8"></div>
-            <p
-                class="script-font text-center text-[#5a716e] max-w-2xl mx-auto mb-16 animate-on-scroll premium-text mobile-text-lg">
-                Join us as we
-                exchange vows and celebrate our union</p>
-
-            <!-- Ceremony Details -->
-            <div class="elegant-card rounded-2xl overflow-hidden animate-on-scroll mb-16 mobile-margin">
-                <div class="md:flex">
-                    <div class="md:w-1/2 p-6 md:p-10">
-                        <div class="mb-8 md:mb-10">
-                            <h3 class="heading-font text-2xl text-[#2c423f] mb-4 flex items-center premium-heading">
-                                <i class="fas fa-ring text-[#c8a97e] mr-3"></i>
-                                Ceremony
-                            </h3>
-                            <p class="text-xl text-[#2c423f] mb-1 premium-text mobile-text-xl">Sunday, January 4, 2026
-                            </p>
-                            <p class="text-lg text-[#5a716e] premium-text mobile-text-lg">4:00 PM</p>
-                            <p class="text-lg text-[#5a716e] mt-4 premium-text mobile-text-lg">The Garden Pavilion</p>
-                            <p class="text-lg text-[#5a716e] premium-text mobile-text-lg">123 Serenity Lane</p>
-                            <p class="text-lg text-[#5a716e] premium-text mobile-text-lg">Beverly Hills, CA 90210</p>
-                            <a href="https://maps.google.com" target="_blank"
-                                class="inline-block mt-4 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium premium-text">
-                                View Location & Directions →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div
-                        class="md:w-1/2 bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] min-h-64 flex items-center justify-center relative overflow-hidden">
-                        <!-- Elegant map placeholder -->
-                        <div class="text-center p-6 md:p-8">
-                            <div
-                                class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-white/80 flex items-center justify-center">
-                                <i class="fas fa-map-marked-alt text-[#c8a97e] text-2xl md:text-3xl"></i>
-                            </div>
-                            <p class="text-[#2c423f] font-medium premium-text mobile-text-lg">The Garden Pavilion</p>
-                            <p class="text-[#5a716e] text-sm mt-2 premium-text">A beautiful outdoor ceremony space</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reception Details -->
-            <div class="elegant-card rounded-2xl overflow-hidden animate-on-scroll mb-16 mobile-margin">
-                <div class="md:flex flex-row-reverse">
-                    <div class="md:w-1/2 p-6 md:p-10">
-                        <div class="mb-8 md:mb-10">
-                            <h3 class="heading-font text-2xl text-[#2c423f] mb-4 flex items-center premium-heading">
-                                <i class="fas fa-glass-cheers text-[#c8a97e] mr-3"></i>
-                                Reception
-                            </h3>
-                            <p class="text-xl text-[#2c423f] mb-1 premium-text mobile-text-xl">Sunday, January 4, 2026
-                            </p>
-                            <p class="text-lg text-[#5a716e] premium-text mobile-text-lg">6:00 PM</p>
-                            <p class="text-lg text-[#5a716e] mt-4 premium-text mobile-text-lg">The Grand Ballroom</p>
-                            <p class="text-lg text-[#5a716e] premium-text mobile-text-lg">456 Celebration Avenue</p>
-                            <p class="text-lg text-[#5a716e] premium-text mobile-text-lg">Beverly Hills, CA 90210</p>
-                            <a href="https://maps.google.com" target="_blank"
-                                class="inline-block mt-4 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium premium-text">
-                                View Location & Directions →
-                            </a>
-                        </div>
-                    </div>
-
-                    <div
-                        class="md:w-1/2 bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] min-h-64 flex items-center justify-center relative overflow-hidden">
-                        <!-- Elegant map placeholder -->
-                        <div class="text-center p-6 md:p-8">
-                            <div
-                                class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-white/80 flex items-center justify-center">
-                                <i class="fas fa-glass-cheers text-[#c8a97e] text-2xl md:text-3xl"></i>
-                            </div>
-                            <p class="text-[#2c423f] font-medium premium-text mobile-text-lg">The Grand Ballroom</p>
-                            <p class="text-[#5a716e] text-sm mt-2 premium-text">An elegant venue for celebration</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-center mobile-margin">
-                <div class="elegant-card p-6 md:p-8 rounded-2xl animate-on-scroll">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
-                        <i class="fas fa-ring text-[#c8a97e] text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="heading-font text-xl text-[#2c423f] mb-4 premium-heading">Ceremony</h3>
-                    <p class="text-[#5a716e] premium-text mobile-text-lg">The ceremony will begin promptly at 4:00 PM in
-                        the garden pavilion. Please
-                        arrive 15 minutes early.</p>
-                </div>
-
-                <div class="elegant-card p-6 md:p-8 rounded-2xl animate-on-scroll">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
-                        <i class="fas fa-glass-cheers text-[#c8a97e] text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="heading-font text-xl text-[#2c423f] mb-4 premium-heading">Reception</h3>
-                    <p class="text-[#5a716e] premium-text mobile-text-lg">Following the ceremony, join us for cocktails,
-                        dinner, and dancing in the
-                        grand ballroom.</p>
-                </div>
-
-                <div class="elegant-card p-6 md:p-8 rounded-2xl animate-on-scroll">
-                    <div
-                        class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
-                        <i class="fas fa-camera text-[#c8a97e] text-xl md:text-2xl"></i>
-                    </div>
-                    <h3 class="heading-font text-xl text-[#2c423f] mb-4 premium-heading">Photography</h3>
-                    <p class="text-[#5a716e] premium-text mobile-text-lg">We welcome you to capture and share your
-                        memories using our wedding
-                        hashtag #ChrisAndJhohanna2026</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gift Section -->
-    <section id="gift" class="py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
-        <div class="max-w-2xl mx-auto relative z-10">
-            <h2
-                class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4 animate-on-scroll premium-heading">
-                Gift
-                Registry</h2>
-            <div class="w-24 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-8"></div>
-            <p class="script-font text-center text-[#5a716e] mb-12 animate-on-scroll premium-text mobile-text-lg">Your
-                presence at our wedding is
-                the greatest gift of all. For those who wish to honor us with a gift, we've provided a GCash option
-                below.</p>
-
-            <div class="elegant-card rounded-2xl p-6 md:p-10 animate-on-scroll mobile-margin">
-                <div class="qr-container">
-                    <div class="gcash-logo">
-                        <!-- GCash Logo -->
-                        <svg viewBox="0 0 100 40" fill="#003057">
-                            <path
-                                d="M30,10 C35,10 40,15 40,20 C40,25 35,30 30,30 C25,30 20,25 20,20 C20,15 25,10 30,10 Z M70,10 C75,10 80,15 80,20 C80,25 75,30 70,30 C65,30 60,25 60,20 C60,15 65,10 70,10 Z M50,0 L50,40 M0,20 L100,20"
-                                stroke="#003057" stroke-width="3" fill="none" />
-                        </svg>
-                    </div>
-
-                    <div class="qr-code">
-                        <!-- QR Code Placeholder -->
-                        <svg width="200" height="200" viewBox="0 0 200 200">
-                            <rect width="200" height="200" fill="white" />
-                            <!-- QR Code Pattern (simplified) -->
-                            <rect x="20" y="20" width="160" height="10" fill="#003057" />
-                            <rect x="20" y="40" width="10" height="140" fill="#003057" />
-                            <rect x="170" y="20" width="10" height="140" fill="#003057" />
-                            <rect x="20" y="170" width="160" height="10" fill="#003057" />
-
-                            <!-- Inner pattern -->
-                            <rect x="40" y="40" width="20" height="20" fill="#003057" />
-                            <rect x="80" y="40" width="20" height="20" fill="#003057" />
-                            <rect x="120" y="40" width="20" height="20" fill="#003057" />
-                            <rect x="40" y="80" width="20" height="20" fill="#003057" />
-                            <rect x="120" y="80" width="20" height="20" fill="#003057" />
-                            <rect x="40" y="120" width="20" height="20" fill="#003057" />
-                            <rect x="80" y="120" width="20" height="20" fill="#003057" />
-                            <rect x="120" y="120" width="20" height="20" fill="#003057" />
-                            <rect x="80" y="160" width="20" height="20" fill="#003057" />
-                        </svg>
-                    </div>
-
-                    <h3 class="heading-font text-2xl text-[#2c423f] mb-2 premium-heading">Scan to Send Gift</h3>
-                    <p class="text-[#5a716e] text-center mb-6 premium-text mobile-text-lg">Use GCash to send your gift
-                        directly to us</p>
-
-                    <div class="bg-[#f8f9fa] p-4 rounded-lg w-full mb-6">
-                        <p class="text-sm text-[#5a716e] text-center premium-text">GCash Number</p>
-                        <p class="text-xl font-bold text-[#2c423f] text-center premium-heading">0917 123 4567</p>
-                    </div>
-
-                    <p class="text-sm text-[#5a716e] text-center premium-text">Thank you for your generosity and for
-                        celebrating with
-                        us on our special day!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 px-4 bg-[#2c423f] text-white text-center relative mobile-padding">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-2xl heading-font mb-2 premium-heading">Christopher & Jhohanna</p>
-            <p class="text-[#c8e6d0] mt-2 premium-text">January 4, 2026</p>
-            <div class="w-16 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-6"></div>
-            <p class="text-sm text-[#a8c8b8] mt-6 premium-text">With love and gratitude for sharing in our special day
+                class="script-font text-lg sm:text-xl md:text-2xl text-[#5a716e] mb-4 sm:mb-6 tracking-wider leading-relaxed">
+                To share in the joy as we begin our forever together
             </p>
-            <div class="mt-8 pt-4 border-t border-[#3a544f]">
-                <p class="text-xs text-[#8aa89a]">Created by Lumen Lens Studios PH</p>
+
+            <p class="script-font text-base sm:text-lg md:text-xl text-[#5a716e] mb-8 sm:mb-12">
+                John &amp; Babes</p>
+
+            <!-- Loading indicator -->
+            <div class="mt-8">
+                <div class="w-24 h-1 bg-[#e4d4c3] rounded-full mx-auto overflow-hidden">
+                    <div id="loadingBar"
+                        class="h-full bg-[#c8a97e] rounded-full transition-all duration-3000 ease-linear origin-left">
+                    </div>
+                </div>
+                <p class="text-xs text-[#5a716e] mt-2 opacity-70">Loading invitation...</p>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- Add a loading transition overlay -->
+    <div id="transitionOverlay"
+        class="fixed inset-0 bg-[#faf7f2] z-40 flex items-center justify-center transition-opacity duration-1000 ease-in-out opacity-0 pointer-events-none">
+        <div class="text-center">
+            <div class="floral-divider mb-8">
+                <img src="images/no_bg/flower-without-stem-bleach_white_light_red.png" alt="Floral divider">
+            </div>
+            <p class="script-font text-2xl text-[#5a716e] animate-pulse">Preparing your invitation...</p>
+        </div>
+    </div>
+
+    <!-- Main Content (initially hidden) -->
+    <div id="mainContent">
+        <!-- Hero Section -->
+        <section id="hero"
+            class="min-h-screen flex items-center justify-center relative overflow-hidden mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-small animate-float" style="top: 10%; left: 5%;">
+                <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-medium animate-float"
+                style="top: 15%; right: 8%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-large animate-float"
+                style="bottom: 20%; left: 10%; animation-delay: 2s;">
+                <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 15%; right: 5%; animation-delay: 3s;">
+                <img src="images/no_bg/flower-without-stem-white_yellow.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-medium animate-float"
+                style="top: 40%; left: 3%; animation-delay: 1.5s;">
+                <img src="images/no_bg/flower-without-stem-light_orange.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 40%; right: 3%; animation-delay: 2.5s;">
+                <img src="images/no_bg/flower-without-stem-orange_red_white.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+
+            <div class="text-center px-4 animate-fade-in-up max-w-4xl mx-auto relative z-10">
+                <div class="floral-divider mb-8">
+                    <img src="images/no_bg/flower-without-stem-bleach_white_light_red.png" alt="Floral divider">
+                </div>
+
+                <!-- Couple name wrapper with names inside -->
+                <div class="couple-name-wrapper">
+                    <h1
+                        class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        John
+                    </h1>
+                    <h1
+                        class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        <span class="text-[#c8a97e] elegant-script">&amp;</span>
+                    </h1>
+                    <h1
+                        class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        Babes
+                    </h1>
+                </div>
+
+                <div class="w-32 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-8">
+                </div>
+
+                <p
+                    class="script-font text-xl md:text-2xl text-[#5a716e] mb-2 tracking-wider px-4 sm:px-6 md:px-0 max-w-2xl mx-auto text-center leading-relaxed whitespace-normal">
+                </p>
+                <p>
+                    Together with our families, we invite you to celebrate our marriage
+                </p>
+                <p class="script-font text-2xl md:text-4xl text-[#2c423f] mb-8 mt-4">January 4, 2026</p>
+
+                <!-- Countdown Timer -->
+                <div
+                    class="mt-12 mb-8 grid grid-cols-2 sm:flex sm:justify-center gap-4 sm:space-x-4 items-center px-4 sm:px-0">
+                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
+                        <div class="countdown-number text-3xl sm:text-4xl" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
+                        <div class="countdown-number text-3xl sm:text-4xl" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
+                        <div class="countdown-number text-3xl sm:text-4xl" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
+                        <div class="countdown-number text-3xl sm:text-4xl" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+
+                <a href="#gift"
+                    class="elegant-btn px-10 py-4 rounded-full text-lg font-medium tracking-wide inline-block mt-4">
+                    Gift Registry
+                </a>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-medium animate-float" style="top: 10%; left: 5%;">
+                <img src="images/no_bg/flower-with-stem-yellow-curve.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 10%; right: 5%; animation-delay: 1.5s;">
+                <img src="images/no_bg/flower-without-stem-light_orange.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-large animate-float"
+                style="top: 20%; right: 10%; animation-delay: 2s;">
+                <img src="images/no_bg/flower-with-stem-red.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4">
+                    Our Story in Pictures
+                </h2>
+
+                <div class="floral-divider my-8">
+                    <img src="images/no_bg/flower-without-stem-red.png" alt="Floral divider">
+                </div>
+
+                <p class="script-font text-center text-[#5a716e] max-w-2xl mx-auto mb-16">
+                    Capturing the moments that led us to this beautiful day
+                </p>
+
+                <div class="gallery-container elegant-card rounded-2xl overflow-hidden mobile-margin">
+                    <div class="gallery-track" id="galleryTrack">
+                        <div class="gallery-slide"
+                            style="background-image: url('images/no_bg/Untitled design (19).png')">
+                        </div>
+                        <div class="gallery-slide"
+                            style="background-image: url('images/no_bg/flower-with-stems-red_orange_yellow.png')"></div>
+                        <div class="gallery-slide"
+                            style="background-image: url('images/no_bg/flower-with-stems-purple.png')">
+                        </div>
+                        <div class="gallery-slide"
+                            style="background-image: url('images/no_bg/flower-with-stems-yellow.png')">
+                        </div>
+                        <div class="gallery-slide"
+                            style="background-image: url('images/no_bg/flower-with-stems-violet.png')">
+                        </div>
+                    </div>
+                    <button class="gallery-nav gallery-prev">
+                        <i class="fas fa-chevron-left text-[#2c423f]"></i>
+                    </button>
+                    <button class="gallery-nav gallery-next">
+                        <i class="fas fa-chevron-right text-[#2c423f]"></i>
+                    </button>
+                    <div class="gallery-dots" id="galleryDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Details Section -->
+        <section id="details" class="py-24 px-4 bg-gradient-to-br from-[#e8f0e6] to-[#faf7f2] relative mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-large animate-float" style="top: 15%; right: 3%;">
+                <img src="images/no_bg/flower-with-stem-pink-curve.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-medium animate-float"
+                style="bottom: 10%; left: 3%; animation-delay: 2s;">
+                <img src="images/no_bg/flower-with-stem-orange.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="top: 40%; left: 8%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-with-stem-baby_blue.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4">
+                    Wedding Celebration
+                </h2>
+
+                <div class="floral-divider my-8">
+                    <img src="images/no_bg/flower-without-stem-light_red_orange.png" alt="Floral divider">
+                </div>
+
+                <p class="script-font text-center text-[#5a716e] max-w-2xl mx-auto mb-16">
+                    Join us as we exchange vows and celebrate our union
+                </p>
+
+                <!-- Ceremony Details -->
+                <div class="elegant-card rounded-2xl overflow-hidden mb-16 mobile-margin floral-frame">
+                    <div class="md:flex">
+                        <div class="md:w-1/2 p-6 md:p-10">
+                            <div class="mb-8 md:mb-10">
+                                <h3 class="heading-font text-2xl text-[#2c423f] mb-4 flex items-center">
+                                    <i class="fas fa-ring text-[#c8a97e] mr-3"></i>
+                                    Ceremony
+                                </h3>
+                                <p class="text-xl text-[#2c423f] mb-1">Sunday, January 4, 2026</p>
+                                <p class="text-lg text-[#5a716e]">4:00 PM</p>
+                                <p class="text-lg text-[#5a716e] mt-4">The Garden Pavilion</p>
+                                <p class="text-lg text-[#5a716e]">123 Serenity Lane</p>
+                                <p class="text-lg text-[#5a716e]">Beverly Hills, CA 90210</p>
+                                <a href="https://maps.google.com" target="_blank"
+                                    class="inline-block mt-4 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium">
+                                    View Location & Directions →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="md:w-1/2 bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] min-h-64 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-20"
+                                style="background-image: url('images/no_bg/flower-with-stem-leaves-yellow-curve.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <div class="text-center p-6 md:p-8 relative z-10">
+                                <div
+                                    class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-white/80 flex items-center justify-center">
+                                    <i class="fas fa-map-marked-alt text-[#c8a97e] text-2xl md:text-3xl"></i>
+                                </div>
+                                <p class="text-[#2c423f] font-medium">The Garden Pavilion</p>
+                                <p class="text-[#5a716e] text-sm mt-2">A beautiful outdoor ceremony space</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reception Details -->
+                <div class="elegant-card rounded-2xl overflow-hidden mb-16 mobile-margin floral-frame">
+                    <div class="md:flex flex-row-reverse">
+                        <div class="md:w-1/2 p-6 md:p-10">
+                            <div class="mb-8 md:mb-10">
+                                <h3 class="heading-font text-2xl text-[#2c423f] mb-4 flex items-center">
+                                    <i class="fas fa-glass-cheers text-[#c8a97e] mr-3"></i>
+                                    Reception
+                                </h3>
+                                <p class="text-xl text-[#2c423f] mb-1">Sunday, January 4, 2026</p>
+                                <p class="text-lg text-[#5a716e]">6:00 PM</p>
+                                <p class="text-lg text-[#5a716e] mt-4">The Grand Ballroom</p>
+                                <p class="text-lg text-[#5a716e]">456 Celebration Avenue</p>
+                                <p class="text-lg text-[#5a716e]">Beverly Hills, CA 90210</p>
+                                <a href="https://maps.google.com" target="_blank"
+                                    class="inline-block mt-4 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium">
+                                    View Location & Directions →
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="md:w-1/2 bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] min-h-64 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-20"
+                                style="background-image: url('images/no_bg/flower-with-stem-baby_blue.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <div class="text-center p-6 md:p-8 relative z-10">
+                                <div
+                                    class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-white/80 flex items-center justify-center">
+                                    <i class="fas fa-glass-cheers text-[#c8a97e] text-2xl md:text-3xl"></i>
+                                </div>
+                                <p class="text-[#2c423f] font-medium">The Grand Ballroom</p>
+                                <p class="text-[#5a716e] text-sm mt-2">An elegant venue for celebration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-center mobile-margin">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                            <i class="fas fa-ring text-[#c8a97e] text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="heading-font text-xl text-[#2c423f] mb-4">Ceremony</h3>
+                        <p class="text-[#5a716e]">The ceremony will begin promptly at 4:00 PM in the garden pavilion.
+                            Please
+                            arrive 15 minutes early.</p>
+                    </div>
+
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                            <i class="fas fa-glass-cheers text-[#c8a97e] text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="heading-font text-xl text-[#2c423f] mb-4">Reception</h3>
+                        <p class="text-[#5a716e]">Following the ceremony, join us for cocktails, dinner, and dancing in
+                            the
+                            grand ballroom.</p>
+                    </div>
+
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                        <div
+                            class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                            <i class="fas fa-camera text-[#c8a97e] text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="heading-font text-xl text-[#2c423f] mb-4">Photography</h3>
+                        <p class="text-[#5a716e]">We welcome you to capture and share your memories using our wedding
+                            hashtag #ChrisAndJhohanna2026</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gift Section -->
+        <section id="gift" class="py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-medium animate-float" style="top: 20%; left: 5%;">
+                <img src="images/no_bg/flower-without-stem-red_orange-has_leaves.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 20%; right: 5%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-without-stem-orange_red_white.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-large animate-float"
+                style="top: 40%; right: 10%; animation-delay: 2s;">
+                <img src="images/no_bg/flower-with-stems-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+
+            <div class="max-w-2xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4">
+                    Gift Registry
+                </h2>
+
+                <div class="floral-divider my-8">
+                    <img src="images/no_bg/flower-without-stem-bleach_white_yellow.png" alt="Floral divider">
+                </div>
+
+                <p class="script-font text-center text-[#5a716e] mb-12">
+                    Your presence at our wedding is the greatest gift of all. For those who wish to honor us with a
+                    gift,
+                    we've provided a GCash option below.
+                </p>
+
+                <div class="elegant-card rounded-2xl p-6 md:p-10 mobile-margin floral-frame">
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="gcash-logo mb-6">
+                            <!-- GCash Logo -->
+                            <svg viewBox="0 0 100 40" fill="#003057" width="120">
+                                <path
+                                    d="M30,10 C35,10 40,15 40,20 C40,25 35,30 30,30 C25,30 20,25 20,20 C20,15 25,10 30,10 Z M70,10 C75,10 80,15 80,20 C80,25 75,30 70,30 C65,30 60,25 60,20 C60,15 65,10 70,10 Z M50,0 L50,40 M0,20 L100,20"
+                                    stroke="#003057" stroke-width="3" fill="none" />
+                            </svg>
+                        </div>
+
+                        <div
+                            class="qr-code w-64 h-64 bg-white rounded-lg p-4 shadow-lg mb-6 flex items-center justify-center">
+                            <div
+                                class="w-full h-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] rounded flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 opacity-30"
+                                    style="background-image: url('images/no_bg/flower-without-stem-bleach_white_yellow.png'); background-size: cover;">
+                                </div>
+                                <div class="text-center relative z-10">
+                                    <p class="text-[#2c423f] font-bold text-lg">GCash</p>
+                                    <p class="text-[#5a716e] text-sm mt-2">0917 123 4567</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="heading-font text-2xl text-[#2c423f] mb-2">Scan to Send Gift</h3>
+                        <p class="text-[#5a716e] text-center mb-6">Use GCash to send your gift directly to us</p>
+
+                        <div class="bg-[#f8f9fa] p-4 rounded-lg w-full mb-6">
+                            <p class="text-sm text-[#5a716e] text-center">GCash Number</p>
+                            <p class="text-xl font-bold text-[#2c423f] text-center">0917 123 4567</p>
+                        </div>
+
+                        <p class="text-sm text-[#5a716e] text-center">Thank you for your generosity and for celebrating
+                            with
+                            us on our special day!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 px-4 bg-[#2c423f] text-white text-center relative mobile-padding">
+            <!-- Floral decoration -->
+            <div class="floral-decoration floral-decoration-small" style="top: 10%; left: 10%; opacity: 0.3;">
+                <img src="images/no_bg/flower-without-stem-bleach.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small" style="bottom: 10%; right: 10%; opacity: 0.3;">
+                <img src="images/no_bg/flower-without-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <p class="text-2xl heading-font mb-2">John &amp; Babes</p>
+                <p class="text-[#c8e6d0] mt-2">January 4, 2026</p>
+                <div class="w-16 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-6">
+                </div>
+                <p class="text-sm text-[#a8c8b8] mt-6">With love and gratitude for sharing in our special day</p>
+                <div class="mt-8 pt-4 border-t border-[#3a544f]">
+                    <p class="text-xs text-[#8aa89a]">Created by Lumen Lens Studios PH</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
-        // Intersection Observer for scroll animations
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate=new Date('January 4, 2026 16:00:00').getTime();
+            const now=new Date().getTime();
+            const timeLeft=weddingDate-now;
+
+            const days=Math.floor(timeLeft/(1000*60*60*24));
+            const hours=Math.floor((timeLeft%(1000*60*60*24))/(1000*60*60));
+            const minutes=Math.floor((timeLeft%(1000*60*60))/(1000*60));
+            const seconds=Math.floor((timeLeft%(1000*60))/1000);
+
+            document.getElementById('days').textContent=days.toString().padStart(2,'0');
+            document.getElementById('hours').textContent=hours.toString().padStart(2,'0');
+            document.getElementById('minutes').textContent=minutes.toString().padStart(2,'0');
+            document.getElementById('seconds').textContent=seconds.toString().padStart(2,'0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown,1000);
+
+        // Gallery Carousel
+        const galleryTrack=document.getElementById('galleryTrack');
+        const slides=document.querySelectorAll('.gallery-slide');
+        const dotsContainer=document.getElementById('galleryDots');
+        const prevBtn=document.querySelector('.gallery-prev');
+        const nextBtn=document.querySelector('.gallery-next');
+
+        let currentSlide=0;
+        const slideCount=slides.length;
+
+        // Create dots
+        slides.forEach((_,index) => {
+            const dot=document.createElement('div');
+            dot.classList.add('gallery-dot');
+            if(index===0) dot.classList.add('active');
+            dot.addEventListener('click',() => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        // Update gallery position
+        function updateGallery() {
+            galleryTrack.style.transform=`translateX(-${currentSlide*100}%)`;
+
+            // Update dots
+            document.querySelectorAll('.gallery-dot').forEach((dot,index) => {
+                dot.classList.toggle('active',index===currentSlide);
+            });
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide=slideIndex;
+            updateGallery();
+        }
+
+        function nextSlide() {
+            currentSlide=(currentSlide+1)%slideCount;
+            updateGallery();
+        }
+
+        function prevSlide() {
+            currentSlide=(currentSlide-1+slideCount)%slideCount;
+            updateGallery();
+        }
+
+        // Event listeners
+        prevBtn.addEventListener('click',prevSlide);
+        nextBtn.addEventListener('click',nextSlide);
+
+        // Auto-advance slides
+        setInterval(nextSlide,5000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click',function(e) {
+                e.preventDefault();
+                const targetId=this.getAttribute('href');
+                const targetElement=document.querySelector(targetId);
+
+                if(targetElement) {
+                    const offsetTop=targetElement.getBoundingClientRect().top+window.pageYOffset;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Wedding invitation loader with 3-second delay
         document.addEventListener('DOMContentLoaded',function() {
-            const animatedElements=document.querySelectorAll('.animate-on-scroll');
+            const invitationSection=document.getElementById('invitation');
+            const invitationContent=document.getElementById('invitationContent');
+            const loadingBar=document.getElementById('loadingBar');
+            const body=document.body;
+            const mainContent=document.getElementById('mainContent');
 
-            const observer=new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        const rect=entry.target.getBoundingClientRect();
-                        const windowHeight=window.innerHeight;
+            // Prevent scrolling on body
+            body.classList.add('invitation-active');
 
-                        if(rect.top<windowHeight/2) {
-                            entry.target.classList.add('animate-fade-in-up');
-                        } else {
-                            const index=Array.from(animatedElements).indexOf(entry.target);
-                            if(index%2===0) {
-                                entry.target.classList.add('animate-fade-in-left');
-                            } else {
-                                entry.target.classList.add('animate-fade-in-right');
-                            }
+            let startTime=Date.now();
+            const loadDuration=3000; // 3 seconds
+
+            function updateLoadingBar() {
+                const elapsed=Date.now()-startTime;
+                const progress=Math.min(elapsed/loadDuration,1);
+
+                // Update loading bar width
+                loadingBar.style.transform=`scaleX(${progress})`;
+
+                if(progress<1) {
+                    requestAnimationFrame(updateLoadingBar);
+                } else {
+                    // Loading complete - show invitation content
+                    invitationContent.classList.add('loaded');
+
+                    // Wait a moment then auto-transition to main invitation
+                    setTimeout(startAutoTransition,3500);
+                }
+            }
+
+            function startAutoTransition() {
+                // Create transition overlay if it doesn't exist
+                let transitionOverlay=document.getElementById('transitionOverlay');
+                if(!transitionOverlay) {
+                    transitionOverlay=document.createElement('div');
+                    transitionOverlay.id='transitionOverlay';
+                    transitionOverlay.className='fixed inset-0 bg-[#faf7f2] z-40 flex items-center justify-center';
+                    transitionOverlay.innerHTML=`
+                <div class="text-center">
+                    <div class="floral-divider mb-8">
+                        <img src="images/no_bg/flower-without-stem-bleach_white_light_red.png" alt="Floral divider">
+                    </div>
+                    <p class="script-font text-2xl text-[#5a716e] animate-pulse">Preparing your invitation...</p>
+                </div>
+            `;
+                    document.body.appendChild(transitionOverlay);
+                }
+
+                // Add exiting classes for fade out animation
+                invitationSection.classList.add('exiting');
+                invitationContent.classList.add('exiting');
+
+                // Show transition overlay
+                transitionOverlay.classList.add('active');
+
+                // After 1 second, hide invitation and start overlay exit
+                setTimeout(() => {
+                    // Hide invitation section
+                    invitationSection.style.display='none';
+
+                    // Start overlay exit animation
+                    transitionOverlay.classList.add('exiting');
+
+                    // After overlay fade out completes, hide it and show main content
+                    setTimeout(() => {
+                        transitionOverlay.style.display='none';
+
+                        // Show main content
+                        mainContent.style.display='block';
+
+                        // Allow body scrolling
+                        body.classList.remove('invitation-active');
+
+                        // Show hero section with animation
+                        const heroSection=document.getElementById('hero');
+                        if(heroSection) {
+                            heroSection.classList.add('entering');
+
+                            // Animate couple names one by one after hero section appears
+                            setTimeout(() => {
+                                animateCoupleNames();
+                            },800);
+
+                            // Scroll to hero section
+                            setTimeout(() => {
+                                heroSection.scrollIntoView({behavior: 'smooth'});
+                            },500);
                         }
+                    },800);
+                },1000);
+            }
 
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },{
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            function animateCoupleNames() {
+                const coupleNames=document.querySelectorAll('.couple-name-wrapper h1');
 
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-
-            // Enhanced smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click',function(e) {
-                    e.preventDefault();
-
-                    const targetId=this.getAttribute('href');
-                    const targetElement=document.querySelector(targetId);
-
-                    if(targetElement) {
-                        // Calculate the position to scroll to
-                        const offsetTop=targetElement.getBoundingClientRect().top+window.pageYOffset;
-
-                        // Smooth scroll to the target
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Gallery Carousel
-            const galleryTrack=document.getElementById('galleryTrack');
-            const slides=document.querySelectorAll('.gallery-slide');
-            const dotsContainer=document.getElementById('galleryDots');
-            const prevBtn=document.querySelector('.gallery-prev');
-            const nextBtn=document.querySelector('.gallery-next');
-
-            let currentSlide=0;
-            const slideCount=slides.length;
-
-            // Create dots
-            slides.forEach((_,index) => {
-                const dot=document.createElement('div');
-                dot.classList.add('gallery-dot');
-                if(index===0) dot.classList.add('active');
-                dot.addEventListener('click',() => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-
-            // Update gallery position
-            function updateGallery() {
-                galleryTrack.style.transform=`translateX(-${currentSlide*100}%)`;
-
-                // Update dots
-                document.querySelectorAll('.gallery-dot').forEach((dot,index) => {
-                    dot.classList.toggle('active',index===currentSlide);
+                // Add animate-in class to each name with staggered timing
+                coupleNames.forEach((name,index) => {
+                    setTimeout(() => {
+                        name.classList.add('animate-in');
+                    },index*300);
                 });
             }
 
-            function goToSlide(slideIndex) {
-                currentSlide=slideIndex;
-                updateGallery();
-            }
+            // Start the loading process
+            setTimeout(() => {
+                updateLoadingBar();
+            },500);
 
-            function nextSlide() {
-                currentSlide=(currentSlide+1)%slideCount;
-                updateGallery();
-            }
-
-            function prevSlide() {
-                currentSlide=(currentSlide-1+slideCount)%slideCount;
-                updateGallery();
-            }
-
-            // Event listeners
-            prevBtn.addEventListener('click',prevSlide);
-            nextBtn.addEventListener('click',nextSlide);
-
-            // Auto-advance slides
-            setInterval(nextSlide,5000);
-
-            // Countdown Timer
-            function updateCountdown() {
-                const weddingDate=new Date('January 4, 2026 16:00:00').getTime();
-                const now=new Date().getTime();
-                const timeLeft=weddingDate-now;
-
-                const days=Math.floor(timeLeft/(1000*60*60*24));
-                const hours=Math.floor((timeLeft%(1000*60*60*24))/(1000*60*60));
-                const minutes=Math.floor((timeLeft%(1000*60*60))/(1000*60));
-                const seconds=Math.floor((timeLeft%(1000*60))/1000);
-
-                document.getElementById('days').textContent=days.toString().padStart(2,'0');
-                document.getElementById('hours').textContent=hours.toString().padStart(2,'0');
-                document.getElementById('minutes').textContent=minutes.toString().padStart(2,'0');
-                document.getElementById('seconds').textContent=seconds.toString().padStart(2,'0');
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown,1000);
+            // Optional: Allow manual skip by clicking
+            invitationSection.addEventListener('click',function() {
+                // If still loading, complete the load immediately
+                if(!invitationContent.classList.contains('loaded')) {
+                    loadingBar.style.transform='scaleX(1)';
+                    invitationContent.classList.add('loaded');
+                    setTimeout(startAutoTransition,300);
+                } else {
+                    // If already loaded, start transition immediately
+                    startAutoTransition();
+                }
+            });
         });
     </script>
 </body>
