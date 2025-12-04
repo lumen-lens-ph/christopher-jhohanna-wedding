@@ -35,6 +35,24 @@
             overflow-x: hidden;
         }
 
+        /* Webkit browsers (Chrome, Safari, Edge) */
+        .scrollbar-hidden::-webkit-scrollbar {
+            /* For all browsers: Allows content to be scrolled */
+            overflow: auto;
+
+            /* 1. For Firefox */
+            scrollbar-width: none;
+
+            /* 2. For Internet Explorer and older Edge (optional legacy support) */
+            -ms-overflow-style: none;
+        }
+
+        /* 3. For WebKit browsers (Chrome, Safari, newer Edge, Opera) */
+        .scrollbar-hidden::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
         .heading-font {
             font-family: 'Playfair Display', serif;
         }
@@ -481,7 +499,7 @@
     </style>
 </head>
 
-<body>
+<body class="scrollbar-hidden">
 
     <!-- You Are Invited Section -->
     <section id="invitation"
@@ -743,13 +761,13 @@
                                     Ceremony
                                 </h3>
                                 <p class="text-xl text-[#2c423f] mb-1">Sunday, January 4, 2026</p>
-                                <p class="text-lg text-[#5a716e]">4:00 PM</p>
-                                <p class="text-lg text-[#5a716e] mt-4">The Garden Pavilion</p>
-                                <p class="text-lg text-[#5a716e]">123 Serenity Lane</p>
-                                <p class="text-lg text-[#5a716e]">Beverly Hills, CA 90210</p>
-                                <a href="https://maps.google.com" target="_blank"
+                                <p class="text-lg text-[#5a716e] mt-4">Aguinaldo Balinao Hall</p>
+                                <p class="text-lg text-[#5a716e]">Artacho</p>
+                                <p class="text-lg text-[#5a716e]">Sison, Pangasinan</p>
+                                <a href="https://maps.app.goo.gl/VTk2Vmjd3eEs8JQq7" target="_blank"
+                                    rel="noopener noreferrer"
                                     class="inline-block mt-4 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium">
-                                    View Location & Directions →
+                                    Click to View Location &amp; Directions →
                                 </a>
                             </div>
                         </div>
@@ -764,8 +782,6 @@
                                     class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-white/80 flex items-center justify-center">
                                     <i class="fas fa-map-marked-alt text-[#c8a97e] text-2xl md:text-3xl"></i>
                                 </div>
-                                <p class="text-[#2c423f] font-medium">The Garden Pavilion</p>
-                                <p class="text-[#5a716e] text-sm mt-2">A beautiful outdoor ceremony space</p>
                             </div>
                         </div>
                     </div>
@@ -781,13 +797,13 @@
                                     Reception
                                 </h3>
                                 <p class="text-xl text-[#2c423f] mb-1">Sunday, January 4, 2026</p>
-                                <p class="text-lg text-[#5a716e]">6:00 PM</p>
-                                <p class="text-lg text-[#5a716e] mt-4">The Grand Ballroom</p>
-                                <p class="text-lg text-[#5a716e]">456 Celebration Avenue</p>
-                                <p class="text-lg text-[#5a716e]">Beverly Hills, CA 90210</p>
-                                <a href="https://maps.google.com" target="_blank"
+                                <p class="text-lg text-[#5a716e]"></p>
+                                <p class="text-lg text-[#5a716e] mt-4">Adriano’s Events and Venue</p>
+                                <p class="text-lg text-[#5a716e]">Banding Pozorrubio Pangasinan</p>
+                                <a href="https://maps.app.goo.gl/skMYDgkEVvXA6fwB8" target="_blank"
+                                    rel="noopener noreferrer"
                                     class="inline-block mt-4 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium">
-                                    View Location & Directions →
+                                    Click to View Location &amp; Directions ←
                                 </a>
                             </div>
                         </div>
@@ -802,44 +818,43 @@
                                     class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 rounded-full bg-white/80 flex items-center justify-center">
                                     <i class="fas fa-glass-cheers text-[#c8a97e] text-2xl md:text-3xl"></i>
                                 </div>
-                                <p class="text-[#2c423f] font-medium">The Grand Ballroom</p>
-                                <p class="text-[#5a716e] text-sm mt-2">An elegant venue for celebration</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6 md:gap-8 text-center mobile-margin">
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                <div class="grid md:grid-cols-3 gap-4 md:gap-8 text-center">
+                    <div class="elegant-card p-4 md:p-8 rounded-2xl">
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
-                            <i class="fas fa-ring text-[#c8a97e] text-xl md:text-2xl"></i>
+                            class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                            <i class="fas fa-ring text-[#c8a97e] text-lg md:text-2xl"></i>
                         </div>
-                        <h3 class="heading-font text-xl text-[#2c423f] mb-4">Ceremony</h3>
-                        <p class="text-[#5a716e]">The ceremony will begin promptly at 4:00 PM in the garden pavilion.
-                            Please
-                            arrive 15 minutes early.</p>
+                        <h3 class="heading-font text-lg md:text-xl text-[#2c423f] mb-3 md:mb-4">Ceremony</h3>
+                        <p class="text-[#5a716e] text-sm md:text-base">The ceremony will begin promptly at 4:00 PM in
+                            the garden pavilion. Please arrive 15 minutes early.</p>
                     </div>
 
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                    <div class="elegant-card p-4 md:p-8 rounded-2xl">
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
-                            <i class="fas fa-glass-cheers text-[#c8a97e] text-xl md:text-2xl"></i>
+                            class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                            <i class="fas fa-glass-cheers text-[#c8a97e] text-lg md:text-2xl"></i>
                         </div>
-                        <h3 class="heading-font text-xl text-[#2c423f] mb-4">Reception</h3>
-                        <p class="text-[#5a716e]">Following the ceremony, join us for cocktails, dinner, and dancing in
-                            the
-                            grand ballroom.</p>
+                        <h3 class="heading-font text-lg md:text-xl text-[#2c423f] mb-3 md:mb-4">Reception</h3>
+                        <p class="text-[#5a716e] text-sm md:text-base">After we say "I do," join us for signature
+                            drinks, dinner, and celebrations!</p>
                     </div>
 
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                    <div class="elegant-card p-4 md:p-8 rounded-2xl">
                         <div
-                            class="w-14 h-14 md:w-16 md:h-16 mx-auto mb-4 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
-                            <i class="fas fa-camera text-[#c8a97e] text-xl md:text-2xl"></i>
+                            class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                            <i class="fas fa-camera text-[#c8a97e] text-lg md:text-2xl"></i>
                         </div>
-                        <h3 class="heading-font text-xl text-[#2c423f] mb-4">Photography</h3>
-                        <p class="text-[#5a716e]">We welcome you to capture and share your memories using our wedding
-                            hashtag #ChrisAndJhohanna2026</p>
+                        <h3 class="heading-font text-lg md:text-xl text-[#2c423f] mb-3 md:mb-4">Photography</h3>
+                        <p class="text-[#5a716e] text-sm md:text-base">
+                            We welcome you to capture and share your memories using our wedding hashtag
+                            <strong
+                                class="text-[#c8a97e] break-all md:break-words">#JohnKanaMunaBabesDitoMunaAko</strong>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -905,12 +920,6 @@
                         </div>
 
                         <h3 class="heading-font text-2xl text-[#2c423f] mb-2">Scan to Send Gift</h3>
-                        <p class="text-[#5a716e] text-center mb-6">Use GCash to send your gift directly to us</p>
-
-                        <div class="bg-[#f8f9fa] p-4 rounded-lg w-full mb-6">
-                            <p class="text-sm text-[#5a716e] text-center">GCash Number</p>
-                            <p class="text-xl font-bold text-[#2c423f] text-center">0917 123 4567</p>
-                        </div>
 
                         <p class="text-sm text-[#5a716e] text-center">Thank you for your generosity and for celebrating
                             with
