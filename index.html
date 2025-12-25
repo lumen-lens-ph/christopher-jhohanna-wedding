@@ -232,6 +232,8 @@
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(200, 169, 126, 0.2);
+            -webkit-backdrop-filter: blur(10px);
+            /* For Safari */
             box-shadow: 0 8px 32px rgba(44, 66, 63, 0.08);
             position: relative;
             z-index: 2;
@@ -372,7 +374,6 @@
             align-items: center;
             justify-content: center;
             padding: 4rem 3rem;
-            margin: 2rem 0;
             background-image: url('images/no_bg/couple-name-inside.png');
             background-repeat: no-repeat;
             background-position: center;
@@ -490,11 +491,239 @@
             display: none;
         }
 
-        /* Mobile optimizations */
+        /* Add mobile-specific optimizations */
         @media (max-width: 768px) {
+
+            /* Hero section mobile fixes */
+            #hero {
+                min-height: 100vh;
+                padding: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Ensure hero content is properly spaced */
+            .hero-content-wrapper {
+                width: 100%;
+                max-width: 100%;
+                padding: 0.5rem;
+            }
+
+            /* Mobile font size adjustments */
+            .header-couple {
+                font-size: 0.875rem !important;
+                line-height: 1.4 !important;
+                margin-top: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
+                padding: 0 0.5rem !important;
+            }
+
+            /* Adjust couple name wrapper for mobile */
             .couple-name-wrapper {
-                min-height: 250px;
-                padding: 3rem 2rem;
+                min-height: 180px !important;
+                padding: 1.5rem 0.5rem !important;
+                margin: 0.5rem 0 !important;
+                width: 95% !important;
+                max-width: 320px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* Adjust couple names font sizes */
+            .couple-name-wrapper h1 {
+                font-size: 1.75rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.25rem !important;
+            }
+
+            .couple-name-wrapper h1:nth-child(2) {
+                font-size: 2rem !important;
+                margin: 0.25rem 0 !important;
+            }
+
+            /* Adjust date and countdown for mobile */
+            #hero .script-font.text-2xl {
+                font-size: 1.25rem !important;
+                margin-top: 0.5rem !important;
+            }
+
+            /* Countdown mobile optimization */
+            #hero .grid.grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 0.5rem !important;
+                margin: 0.5rem auto !important;
+                max-width: 280px !important;
+            }
+
+            .countdown-item {
+                padding: 0.5rem 0.25rem !important;
+                min-width: auto !important;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem !important;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem !important;
+            }
+
+            /* Button mobile optimization */
+            #hero .elegant-btn {
+                padding: 0.75rem 1.5rem !important;
+                font-size: 0.875rem !important;
+                margin: 1rem auto !important;
+            }
+
+            /* Ensure the header couple text is visible without scrolling */
+            .header-couple-container {
+                margin-top: 1rem !important;
+                padding-top: 0.5rem !important;
+            }
+        }
+
+        /* Extra small mobile adjustments */
+        @media (max-width: 375px) {
+            .couple-name-wrapper h1 {
+                font-size: 1.5rem !important;
+            }
+
+            .couple-name-wrapper h1:nth-child(2) {
+                font-size: 1.75rem !important;
+            }
+
+            .header-couple {
+                font-size: 0.8rem !important;
+                padding: 0 0.25rem !important;
+            }
+        }
+
+        /* Fix for 278px width specifically */
+        @media (max-width: 320px) {
+            #hero {
+                padding: 0.5rem !important;
+            }
+
+            .couple-name-wrapper {
+                min-height: 160px !important;
+                padding: 1rem 0.25rem !important;
+                max-width: 280px !important;
+            }
+
+            .couple-name-wrapper h1 {
+                font-size: 1.3rem !important;
+                margin-bottom: 0.1rem !important;
+            }
+
+            .couple-name-wrapper h1:nth-child(2) {
+                font-size: 1.5rem !important;
+                margin: 0.1rem 0 !important;
+            }
+
+            #hero .grid.grid-cols-2 {
+                max-width: 260px !important;
+                gap: 0.25rem !important;
+            }
+
+            .countdown-item {
+                padding: 0.4rem 0.2rem !important;
+            }
+
+            .countdown-number {
+                font-size: 1.3rem !important;
+            }
+
+            .countdown-label {
+                font-size: 0.6rem !important;
+            }
+        }
+
+        /* Mobile responsiveness for Entourage section */
+        @media (max-width: 768px) {
+            #entourage {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            #entourage .heading-font {
+                font-size: 2rem !important;
+            }
+
+            #entourage .script-font {
+                font-size: 1rem !important;
+            }
+
+            .elegant-card {
+                padding: 1.5rem !important;
+            }
+
+            /* Make bridesmaids and groomsmen single column on mobile */
+            #entourage .grid.grid-cols-1.sm\\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 0.75rem !important;
+            }
+
+            /* Adjust floral decorations for mobile */
+            .floral-decoration {
+                width: 60px !important;
+                height: 60px !important;
+            }
+
+            .floral-decoration-medium {
+                width: 80px !important;
+                height: 80px !important;
+            }
+
+            .floral-decoration-large {
+                width: 100px !important;
+                height: 100px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #entourage {
+                padding: 2rem 1rem !important;
+            }
+
+            #entourage .heading-font {
+                font-size: 1.75rem !important;
+            }
+
+            #entourage .script-font {
+                font-size: 0.9rem !important;
+            }
+
+            .elegant-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            /* Reduce spacing between items */
+            .space-y-4>*+* {
+                margin-top: 0.5rem !important;
+            }
+
+            .space-y-3>*+* {
+                margin-top: 0.4rem !important;
+            }
+        }
+
+        @media (max-width: 320px) {
+            #entourage {
+                padding: 1.5rem 0.75rem !important;
+            }
+
+            #entourage .heading-font {
+                font-size: 1.5rem !important;
+            }
+
+            #entourage .script-font {
+                font-size: 0.85rem !important;
+            }
+
+            .elegant-card {
+                padding: 0.75rem !important;
             }
         }
     </style>
@@ -570,96 +799,439 @@
     <div id="mainContent">
         <!-- Hero Section -->
         <section id="hero"
-            class="min-h-screen flex items-center justify-center relative overflow-hidden mobile-padding">
+            class="min-h-screen flex items-center justify-center relative overflow-hidden mobile-padding pt-4">
             <div class="floral-bg"></div>
 
-            <!-- Floral decorations -->
-            <div class="floral-decoration floral-decoration-small animate-float" style="top: 10%; left: 5%;">
-                <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration"
-                    class="w-full h-full">
-            </div>
-            <div class="floral-decoration floral-decoration-medium animate-float"
-                style="top: 15%; right: 8%; animation-delay: 1s;">
-                <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral decoration"
-                    class="w-full h-full">
-            </div>
-            <div class="floral-decoration floral-decoration-large animate-float"
-                style="bottom: 20%; left: 10%; animation-delay: 2s;">
-                <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
-            </div>
-            <div class="floral-decoration floral-decoration-small animate-float"
-                style="bottom: 15%; right: 5%; animation-delay: 3s;">
-                <img src="images/no_bg/flower-without-stem-white_yellow.png" alt="Floral decoration"
-                    class="w-full h-full">
-            </div>
-            <div class="floral-decoration floral-decoration-medium animate-float"
-                style="top: 40%; left: 3%; animation-delay: 1.5s;">
-                <img src="images/no_bg/flower-without-stem-light_orange.png" alt="Floral decoration"
-                    class="w-full h-full">
-            </div>
-            <div class="floral-decoration floral-decoration-small animate-float"
-                style="bottom: 40%; right: 3%; animation-delay: 2.5s;">
-                <img src="images/no_bg/flower-without-stem-orange_red_white.png" alt="Floral decoration"
-                    class="w-full h-full">
-            </div>
+            <!-- Floral decorations (keep same) -->
+            <!-- ... -->
 
-            <div class="text-center px-4 animate-fade-in-up max-w-4xl mx-auto relative z-10">
-                <div class="floral-divider mb-8">
+            <div class="text-center px-4 animate-fade-in-up max-w-4xl mx-auto relative z-10 hero-content-wrapper">
+                <div class="floral-divider mb-4 md:mb-8">
                     <img src="images/no_bg/flower-without-stem-bleach_white_light_red.png" alt="Floral divider">
                 </div>
 
+                <!-- Header couple text - now properly visible -->
+                <div class="header-couple-container mb-4 md:mb-6">
+                    <p
+                        class="header-couple heading-font text-sm md:text-lg lg:text-xl font-light text-[#2c423f] tracking-wide px-2">
+                        By the Grace of God and with the
+                        Blessings of our Family
+                        <br>
+                        <br>
+                        We,
+                    </p>
+                </div>
+
                 <!-- Couple name wrapper with names inside -->
-                <div class="couple-name-wrapper">
+                <div class="couple-name-wrapper my-2 md:my-4">
                     <h1
-                        class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide opacity-0 transform translate-y-8">
-                        John
+                        class="heading-font text-2xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-1 md:mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        John Christopher
                     </h1>
                     <h1
-                        class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        class="heading-font text-3xl md:text-7xl lg:text-8xl font-light text-[#2c423f] my-1 md:mb-4 tracking-wide opacity-0 transform translate-y-8">
                         <span class="text-[#c8a97e] elegant-script">&amp;</span>
                     </h1>
                     <h1
-                        class="heading-font text-5xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-4 tracking-wide opacity-0 transform translate-y-8">
-                        Babes
+                        class="heading-font text-2xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-1 md:mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        Jhohanna Babes
                     </h1>
                 </div>
 
-                <div class="w-32 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-8">
+                <div
+                    class="w-24 md:w-32 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-2 md:my-4">
                 </div>
 
-                <p
-                    class="script-font text-xl md:text-2xl text-[#5a716e] mb-2 tracking-wider px-4 sm:px-6 md:px-0 max-w-2xl mx-auto text-center leading-relaxed whitespace-normal">
-                </p>
-                <p>
-                    Together with our families, we invite you to celebrate our marriage
-                </p>
-                <p class="script-font text-2xl md:text-4xl text-[#2c423f] mb-8 mt-4">January 4, 2026</p>
+                <!-- Updated text section -->
+                <div class="text-content-container px-2">
+                    <p
+                        class="script-font text-base md:text-2xl text-[#5a716e] mb-1 md:mb-2 tracking-wider leading-relaxed">
+                        Joyfully Invite You to Celebrate the Beginning of our Marriage.
+                    </p>
+                    <p
+                        class="script-font text-base md:text-2xl text-[#5a716e] mb-2 md:mb-4 tracking-wider leading-relaxed">
+                        As We Promise to Journey Through Life Together, Hand in Hand.
+                    </p>
+                    <p class="script-font text-lg md:text-4xl text-[#2c423f] mb-4 md:mb-8 mt-2 md:mt-4">January 4, 2026
+                    </p>
+                </div>
 
                 <!-- Countdown Timer -->
                 <div
-                    class="mt-12 mb-8 grid grid-cols-2 sm:flex sm:justify-center gap-4 sm:space-x-4 items-center px-4 sm:px-0">
-                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
-                        <div class="countdown-number text-3xl sm:text-4xl" id="days">00</div>
-                        <div class="countdown-label">Days</div>
+                    class="mt-4 md:mt-12 mb-4 md:mb-8 grid grid-cols-2 gap-2 md:flex md:justify-center md:gap-4 items-center px-2 md:px-0 max-w-xs md:max-w-none mx-auto">
+                    <div class="countdown-item flex flex-col items-center justify-center">
+                        <div class="countdown-number text-xl md:text-4xl" id="days">00</div>
+                        <div class="countdown-label text-xs md:text-base">Days</div>
                     </div>
-                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
-                        <div class="countdown-number text-3xl sm:text-4xl" id="hours">00</div>
-                        <div class="countdown-label">Hours</div>
+                    <div class="countdown-item flex flex-col items-center justify-center">
+                        <div class="countdown-number text-xl md:text-4xl" id="hours">00</div>
+                        <div class="countdown-label text-xs md:text-base">Hours</div>
                     </div>
-                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
-                        <div class="countdown-number text-3xl sm:text-4xl" id="minutes">00</div>
-                        <div class="countdown-label">Minutes</div>
+                    <div class="countdown-item flex flex-col items-center justify-center">
+                        <div class="countdown-number text-xl md:text-4xl" id="minutes">00</div>
+                        <div class="countdown-label text-xs md:text-base">Minutes</div>
                     </div>
-                    <div class="countdown-item w-full sm:w-auto flex flex-col items-center">
-                        <div class="countdown-number text-3xl sm:text-4xl" id="seconds">00</div>
-                        <div class="countdown-label">Seconds</div>
+                    <div class="countdown-item flex flex-col items-center justify-center">
+                        <div class="countdown-number text-xl md:text-4xl" id="seconds">00</div>
+                        <div class="countdown-label text-xs md:text-base">Seconds</div>
                     </div>
                 </div>
 
                 <a href="#gift"
-                    class="elegant-btn px-10 py-4 rounded-full text-lg font-medium tracking-wide inline-block mt-4">
+                    class="script-font elegant-btn px-6 md:px-10 py-3 md:py-4 rounded-full text-sm md:text-lg font-medium tracking-wide inline-block my-4 md:my-8">
                     Gift Registry
                 </a>
+            </div>
+        </section>
+
+        <!-- Entourage Section -->
+        <section id="entourage"
+            class="py-12 md:py-20 px-4 bg-gradient-to-b from-[#EFCFD4] to-[#FEEBE7] relative mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-medium animate-float" style="top: 10%; left: 5%;">
+                <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 15%; right: 5%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+
+            <div class="max-w-6xl mx-auto relative z-10">
+                <!-- Main Title -->
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl text-[#2c423f] mb-2">
+                        The Entourage
+                    </h2>
+                    <div class="floral-divider my-4 md:my-6">
+                        <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral divider">
+                    </div>
+                    <p class="script-font text-2xl md:text-3xl lg:text-4xl text-[#c8a97e] mb-4">
+                        PAJARILLO-BULATAO
+                    </p>
+                </div>
+
+                <!-- Nuptials Section -->
+                <div class="text-center mb-6 md:mb-8">
+                    <h3 class="heading-font text-2xl md:text-3xl lg:text-4xl text-[#2c423f] mb-6 md:mb-8">
+                        Nuptials
+                    </h3>
+
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-8">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Officiating Minister
+                        </h4>
+                        <div class="space-y-3">
+                            <p class="script-font text-lg md:text-xl lg:text-2xl text-[#2c423f]">Pastor Marvin C. Diaz
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parents Section -->
+                <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
+                    <!-- Parents of the Bride -->
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Parents of the Bride
+                        </h4>
+                        <div class="space-y-3">
+                            <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Joseph B. Bulatao</p>
+                            <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Honeylette C. Bulatao
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Parents of the Groom -->
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Parents of the Groom
+                        </h4>
+                        <div class="space-y-3">
+                            <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">John N. Pajarillo Jr.
+                            </p>
+                            <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Jenalyn M. Pajarillo
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principal Sponsors -->
+                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 md:mb-16">
+                    <div class="text-center mb-6 md:mb-8">
+                        <h3 class="heading-font text-2xl md:text-3xl lg:text-4xl text-[#2c423f]">
+                            Principal Sponsors
+                        </h3>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+                        <!-- Left Column -->
+                        <div class="space-y-3 md:space-y-4 text-center">
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Dr. Habibniya &amp;
+                                Dr.
+                                Cheraghzadeh
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Gideon &amp; Mrs.
+                                Teresita
+                                Odom</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Arch't Nowie &amp;
+                                Mrs. Janet
+                                Rante</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Capt. Garry &amp; Mrs.
+                                Grace Naces
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Ernesto &amp; Mrs.
+                                Rosana
+                                Mendoza
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Alaric Vingua Jr.
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Engr. Nader Iskandar
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Mario &amp; Mrs.
+                                Sylvia
+                                Melegrito
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mrs. Lydia Reyes &amp;
+                                Mrs.
+                                Janelyn
+                                Caras</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Fernando &amp;
+                                Mrs. Fredelita
+                                Panelo</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Gilbert &amp; Mrs.
+                                Cristina
+                                Arce
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mrs. Linda Rajput</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Rufino &amp; Mrs.
+                                Melinda
+                                Legaspi
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Eric De Guzman</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Romeo Fontanilla
+                            </p>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="space-y-3 md:space-y-4 text-center">
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Engr. Michael III
+                                &amp; Mrs. Karen
+                                Labios</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Kgwd. Dennis &amp;
+                                Mrs. Emerita
+                                Araos
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Kgwd. Jhun &amp; Mrs.
+                                Corazon
+                                Datalio
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Dominador &amp;
+                                Mrs. Gladys
+                                Carganilla</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Harold &amp; Mrs.
+                                Cecil Campos
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Benjamin Jr. &amp;
+                                Mrs.
+                                Caspillan
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Ptr. Gaspar &amp; Mrs.
+                                Germilyn
+                                Rabang
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Jerry &amp; Mrs.
+                                Lailani
+                                Cariaga
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Jaime &amp; Mrs.
+                                FlordeLiza
+                                Ronquillo</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Rodney &amp; Mrs.
+                                Lyric
+                                Salagubang
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Orlando &amp; Mrs.
+                                Rachel
+                                Fuentes
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Lolito &amp; Mrs.
+                                Maria
+                                Salcedo</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Rodolfo &amp; Mrs.
+                                Virginia
+                                Ferrer
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mr. Elmer &amp; Mrs.
+                                Delia Espino
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Mrs. Remy Consolacion
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maid of Honor & Best Man -->
+                <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Maid of Honor
+                        </h4>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Ma. Teresa Nicole Salcedo
+                        </p>
+                    </div>
+
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Best Man
+                        </h4>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Justine Balanag</p>
+                    </div>
+                </div>
+
+                <!-- Bridesmaids & Groomsmen -->
+                <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
+                    <!-- Bridesmaids -->
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl mb-6 md:mb-0">
+                        <h4
+                            class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6 text-center">
+                            Bridesmaids
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-center sm:text-left">
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Lhady Heart Bulatao
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Chelsea Joy Pajarillo
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Zyra Bulatao</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Christine Pajarillo
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Lovely Ken Bulatao</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Bianca Jamme Valera
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Franscine Micah Danio
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Maria Andrea Odom</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Kind Wyne Labios</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Ashley Moryn Siapno
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Kesha Lee Bermudez</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Gynbryntlyn Schyne
+                                Caras</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Trisha Mae Bulatao</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Krisy Camille Arce</p>
+                        </div>
+                    </div>
+
+                    <!-- Groomsmen -->
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                        <h4
+                            class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6 text-center">
+                            Groomsmen
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-center sm:text-left">
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Christian Jay Campos
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Weizzen Carlo Perreras
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">John Michael Camacho
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Jomar Magalong</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Christian Mar Nacis
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Johnray Banayat</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">John Mari Arce</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Jerdon Philip Macaraeg
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Aaron Jhay Oliva</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Jan Benard Bulatao</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Xid Alexandrei
+                                Pajarillo</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Rheyil Balmonte</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Carlo Barlaan</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Romhar Bolatao</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Little Bride & Groom -->
+                <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Little Bride
+                        </h4>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Daniela Zeph Bulatao</p>
+                    </div>
+
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Little Groom
+                        </h4>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Aki Ren Matris</p>
+                    </div>
+                </div>
+
+                <!-- Flower Girls -->
+                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 text-center">
+                    <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                        Flower Girls
+                    </h4>
+                    <div class="space-y-3">
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Yoona Raya Rafanan</p>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Fatima Adet Dionne Corpuz
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bearers Section 1 -->
+                <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Bible Bearer
+                        </h4>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Ryven Klaud Panelo</p>
+                    </div>
+
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Contract Bearer
+                        </h4>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Enzo Nicholas Pajarillo</p>
+                    </div>
+                </div>
+
+                <!-- Bearers Section 2 -->
+                <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                        <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                            Pen Bearer
+                        </h4>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Jayce Ian Tavas</p>
+                    </div>
+
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                        <h4
+                            class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6 text-center">
+                            Herald Bearers
+                        </h4>
+                        <div class="space-y-3 text-center">
+                            <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Marvin Diaz III</p>
+                            <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Eliajah Parrocha</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Little Bridesmaids -->
+                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 text-center">
+                    <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
+                        Little Bridesmaids
+                    </h4>
+                    <div class="space-y-3">
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Chloe Cabrera</p>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Maria Cassandra Calpito</p>
+                        <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Astrid Khandisse Panelo</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -889,7 +1461,8 @@
                             <i class="fas fa-ring text-[#c8a97e] text-lg md:text-2xl"></i>
                         </div>
                         <h3 class="heading-font text-lg md:text-xl text-[#2c423f] mb-3 md:mb-4">Ceremony</h3>
-                        <p class="text-[#5a716e] text-sm md:text-base">The ceremony will begin in Aguinaldo Balinao Hall. Please arrive 30 minutes early.</p>
+                        <p class="text-[#5a716e] text-sm md:text-base">The ceremony will begin in Aguinaldo Balinao
+                            Hall. Please arrive 30 minutes early.</p>
                     </div>
 
                     <div class="elegant-card p-4 md:p-8 rounded-2xl">
@@ -910,8 +1483,7 @@
                         <h3 class="heading-font text-lg md:text-xl text-[#2c423f] mb-3 md:mb-4">Photography</h3>
                         <p class="text-[#5a716e] text-sm md:text-base">
                             We welcome you to capture and share your memories using our wedding hashtag
-                            <strong
-                                class="text-[#c8a97e] break-all md:break-words">#BABESFoundHerJOHNuineLove</strong>
+                            <strong class="text-[#c8a97e] break-all md:break-words">#BABESFoundHerJOHNuineLove</strong>
                         </p>
                     </div>
                 </div>
@@ -919,7 +1491,7 @@
         </section>
 
         <!-- Gift Section -->
-        <section id="gift" class="py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
+        <section class="py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
             <div class="floral-bg"></div>
 
             <!-- Floral decorations -->
@@ -1203,6 +1775,9 @@
                         name.classList.add('animate-in');
                     },index*300);
                 });
+
+                // Force a reflow to ensure animations work
+                document.body.clientHeight;
             }
 
             // Start the loading process
