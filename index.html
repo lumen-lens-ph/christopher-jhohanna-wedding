@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather+Sans&display=swap"
+        rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&family=Dancing+Script:wght@400;500;600;700&display=swap"
         rel="stylesheet">
@@ -23,6 +25,7 @@
             --pink: #FEEBE7;
         }
 
+        /* Reset & Base */
         * {
             margin: 0;
             padding: 0;
@@ -36,7 +39,6 @@
             overflow-x: hidden;
         }
 
-        /* Webkit browsers (Chrome, Safari, Edge) */
         .scrollbar-hidden::-webkit-scrollbar {
             /* For all browsers: Allows content to be scrolled */
             overflow: auto;
@@ -54,6 +56,7 @@
             background: transparent;
         }
 
+        /* Typography */
         .heading-font {
             font-family: 'Playfair Display', serif;
         }
@@ -64,6 +67,11 @@
 
         .elegant-script {
             font-family: 'Dancing Script', cursive;
+        }
+
+        .great-vibes-regular {
+            font-family: "Great Vibes", cursive;
+            font-weight: 400;
         }
 
         /* Animations */
@@ -80,30 +88,84 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
             }
 
             50% {
                 transform: translateY(-15px) rotate(5deg);
             }
-
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
         }
 
         @keyframes pulse {
-            0% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
 
             50% {
                 transform: scale(1.05);
             }
+        }
 
-            100% {
+        @keyframes heroEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
                 transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
             }
         }
 
@@ -119,7 +181,23 @@
             animation: pulse 4s ease-in-out infinite;
         }
 
-        /* Floral elements */
+        .animate-slide-left {
+            animation: slideInFromLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slide-right {
+            animation: slideInFromRight 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Floral Elements */
         .floral-frame {
             position: relative;
             padding: 2rem;
@@ -129,8 +207,8 @@
         .floral-frame::after {
             content: "";
             position: absolute;
-            width: 120px;
-            height: 120px;
+            width: 15%;
+            height: 10%;
             background-size: contain;
             background-repeat: no-repeat;
             z-index: 1;
@@ -161,7 +239,6 @@
             mix-blend-mode: multiply;
             width: 100%;
             height: 100%;
-            z-index: 10;
         }
 
         .floral-decoration-small {
@@ -181,10 +258,7 @@
 
         .floral-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             opacity: 0.55;
             z-index: 0;
             background-color: var(--pink);
@@ -192,78 +266,6 @@
             background-position: center;
         }
 
-        /* Button styles */
-        .elegant-btn {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
-            color: var(--dark-green);
-            transition: all 0.3s ease;
-            border: none;
-            font-weight: 500;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .elegant-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(200, 169, 126, 0.3);
-        }
-
-        .elegant-btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--light-gold) 0%, var(--gold) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .elegant-btn:hover::before {
-            opacity: 1;
-        }
-
-        /* Card styles */
-        .elegant-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(200, 169, 126, 0.2);
-            -webkit-backdrop-filter: blur(10px);
-            /* For Safari */
-            box-shadow: 0 8px 32px rgba(44, 66, 63, 0.08);
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Countdown timer */
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            padding: 15px 10px;
-            min-width: 80px;
-            box-shadow: 0 4px 15px rgba(44, 66, 63, 0.1);
-            position: relative;
-            z-index: 2;
-        }
-
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--dark-green);
-        }
-
-        .countdown-label {
-            font-size: 0.8rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Floral divider */
         .floral-divider {
             position: relative;
             height: 40px;
@@ -293,53 +295,175 @@
             width: auto;
         }
 
-        /* Gallery */
+        /* Components */
+        .elegant-btn {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+            color: var(--dark-green);
+            border: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .elegant-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(200, 169, 126, 0.3);
+        }
+
+        .elegant-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--light-gold) 0%, var(--gold) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .elegant-btn:hover::before {
+            opacity: 1;
+        }
+
+        .elegant-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 169, 126, 0.2);
+            box-shadow: 0 8px 32px rgba(44, 66, 63, 0.08);
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        .elegant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(44, 66, 63, 0.12);
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 15px 10px;
+            min-width: 80px;
+            box-shadow: 0 4px 15px rgba(44, 66, 63, 0.1);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(44, 66, 63, 0.15);
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery Container Responsive Fixes */
         .gallery-container {
             position: relative;
             overflow: hidden;
             border-radius: 12px;
+            min-height: 300px;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-container {
+                min-height: 500px;
+                max-width: 800px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .gallery-container {
+                min-height: 420px;
+                max-width: 700px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-height: 812px) {
+            .gallery-container {
+                min-height: 350px;
+                max-height: 70vh;
+            }
         }
 
         .gallery-track {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
         }
 
         .gallery-slide {
+            flex: 0 0 100%;
             min-width: 100%;
-            height: 500px;
+            height: 100%;
+            position: relative;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity 0.6s ease;
+            background-color: var(--pastel-pink);
+            /* Fallback color */
+        }
+
+        .gallery-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
         }
 
         .gallery-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 10;
+            z-index: 20;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .gallery-nav:hover {
             background: white;
             transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-prev {
-            left: 20px;
+            left: 10px;
         }
 
         .gallery-next {
-            right: 20px;
+            right: 10px;
         }
 
         .gallery-dots {
@@ -350,6 +474,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
+            z-index: 20;
         }
 
         .gallery-dot {
@@ -359,14 +484,64 @@
             background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .gallery-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
         }
 
         .gallery-dot.active {
             background: white;
-            transform: scale(1.2);
+            transform: scale(1.3);
+            border-color: var(--gold);
         }
 
-        /* Updated couple name wrapper */
+        /* Floral Overlay for Gallery */
+        .floral-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        .floral-corner {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.6;
+        }
+
+        .floral-corner-tl {
+            top: -30px;
+            left: -30px;
+            transform: rotate(0deg);
+        }
+
+        .floral-corner-tr {
+            top: -30px;
+            right: -30px;
+            transform: rotate(90deg);
+        }
+
+        .floral-corner-bl {
+            bottom: -30px;
+            left: -30px;
+            transform: rotate(270deg);
+        }
+
+        .floral-corner-br {
+            bottom: -30px;
+            right: -30px;
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
         .couple-name-wrapper {
             position: relative;
             display: flex;
@@ -374,35 +549,39 @@
             align-items: center;
             justify-content: center;
             padding: 4rem 3rem;
-            background-image: url('images/no_bg/couple-name-inside.png');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
             z-index: 2;
             min-height: 300px;
         }
 
-        .couple-name-wrapper::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('images/no_bg/couple-name-inside.png');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            z-index: -1;
+        .couple-name-wrapper h1 {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
 
-        /* Prevent body scroll when invitation is active */
+        .couple-name-wrapper h1.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .couple-name-wrapper h1:nth-child(1).animate-in {
+            transition-delay: 0.2s;
+        }
+
+        .couple-name-wrapper h1:nth-child(2).animate-in {
+            transition-delay: 0.4s;
+        }
+
+        .couple-name-wrapper h1:nth-child(3).animate-in {
+            transition-delay: 0.6s;
+        }
+
+        /* Invitation States */
         body.invitation-active {
             overflow: hidden;
             height: 100vh;
         }
 
-        /* Initially hide invitation content */
         #invitationContent {
             opacity: 0;
             transform: translateY(20px);
@@ -413,7 +592,6 @@
             transform: translateY(0);
         }
 
-        /* Invitation exit animations */
         #invitation.exiting {
             opacity: 0;
             transform: translateY(-20px);
@@ -424,7 +602,6 @@
             transform: scale(0.95);
         }
 
-        /* Transition overlay */
         #transitionOverlay {
             opacity: 0;
             pointer-events: none;
@@ -440,61 +617,73 @@
             opacity: 0;
         }
 
-        /* Hero section entrance animation */
         #hero.entering {
             animation: heroEntrance 1s ease-out 0.8s both;
-        }
-
-        @keyframes heroEntrance {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Couple name animations */
-        .couple-name-wrapper h1 {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
         }
 
         body #invitation {
             background-color: var(--pink) !important;
         }
 
-        .couple-name-wrapper h1.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Staggered delays for each name */
-        .couple-name-wrapper h1:nth-child(1).animate-in {
-            transition-delay: 0.2s;
-        }
-
-        .couple-name-wrapper h1:nth-child(2).animate-in {
-            transition-delay: 0.4s;
-        }
-
-        .couple-name-wrapper h1:nth-child(3).animate-in {
-            transition-delay: 0.6s;
-        }
-
-        /* NEW: Hide main content initially */
         #mainContent {
             display: none;
         }
 
-        /* Add mobile-specific optimizations */
-        @media (max-width: 768px) {
+        /* Card Transitions */
+        .transition-transform {
+            transition: transform 0.3s ease;
+        }
 
-            /* Hero section mobile fixes */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        @media (orientation: portrait) {
+            .gallery-container {
+                aspect-ratio: 4/3;
+                min-height: auto;
+            }
+        }
+
+        /* Landscape orientation */
+        @media (orientation: landscape) and (max-height: 600px) {
+            .gallery-container {
+                min-height: 250px;
+                max-height: 60vh;
+            }
+        }
+
+        /* Mobile Breakpoints */
+        @media (max-width: 768px) {
+            .gallery-nav {
+                width: 50px;
+                height: 50px;
+            }
+
+            .gallery-prev {
+                left: 20px;
+            }
+
+            .gallery-next {
+                right: 20px;
+            }
+
+            .floral-corner {
+                width: 80px;
+                height: 80px;
+            }
+
+            .floral-corner-tl,
+            .floral-corner-tr,
+            .floral-corner-bl,
+            .floral-corner-br {
+                top: -20px;
+                right: -20px;
+                bottom: -20px;
+                left: -20px;
+            }
+
+            /* Hero Section */
             #hero {
                 min-height: 100vh;
                 padding: 1rem;
@@ -503,54 +692,45 @@
                 justify-content: center;
             }
 
-            /* Ensure hero content is properly spaced */
             .hero-content-wrapper {
                 width: 100%;
                 max-width: 100%;
                 padding: 0.5rem;
             }
 
-            /* Mobile font size adjustments */
-            .header-couple {
-                font-size: 0.875rem !important;
-                line-height: 1.4 !important;
-                margin-top: 0.5rem !important;
-                margin-bottom: 0.5rem !important;
-                padding: 0 0.5rem !important;
+            .header-couple-container {
+                margin-top: 1rem !important;
+                padding-top: 0.5rem !important;
             }
 
-            /* Adjust couple name wrapper for mobile */
             .couple-name-wrapper {
-                min-height: 180px !important;
-                padding: 1.5rem 0.5rem !important;
-                margin: 0.5rem 0 !important;
+                min-height: 200px !important;
+                padding: 2rem 0.5rem !important;
+                margin: 1rem 0 !important;
                 width: 95% !important;
-                max-width: 320px !important;
+                max-width: 340px !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
             }
 
-            /* Adjust couple names font sizes */
             .couple-name-wrapper h1 {
-                font-size: 1.75rem !important;
-                line-height: 1.2 !important;
-                margin-bottom: 0.25rem !important;
+                font-size: 3.25rem !important;
+                line-height: 1.1 !important;
+                margin-bottom: 0.5rem !important;
             }
 
             .couple-name-wrapper h1:nth-child(2) {
-                font-size: 2rem !important;
-                margin: 0.25rem 0 !important;
+                font-size: 3.5rem !important;
+                margin: 0.5rem 0 !important;
             }
 
-            /* Adjust date and countdown for mobile */
             #hero .script-font.text-2xl {
                 font-size: 1.25rem !important;
                 margin-top: 0.5rem !important;
             }
 
-            /* Countdown mobile optimization */
             #hero .grid.grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                grid-template-columns: repeat(2, 1fr) !important;
                 gap: 0.5rem !important;
                 margin: 0.5rem auto !important;
                 max-width: 280px !important;
@@ -569,37 +749,201 @@
                 font-size: 0.7rem !important;
             }
 
-            /* Button mobile optimization */
             #hero .elegant-btn {
                 padding: 0.75rem 1.5rem !important;
                 font-size: 0.875rem !important;
                 margin: 1rem auto !important;
             }
 
-            /* Ensure the header couple text is visible without scrolling */
-            .header-couple-container {
-                margin-top: 1rem !important;
-                padding-top: 0.5rem !important;
-            }
-        }
-
-        /* Extra small mobile adjustments */
-        @media (max-width: 375px) {
-            .couple-name-wrapper h1 {
-                font-size: 1.5rem !important;
+            /* Entourage Section */
+            #entourage {
+                padding: 3rem 0 !important;
             }
 
-            .couple-name-wrapper h1:nth-child(2) {
+            #entourage .heading-font {
+                font-size: 2rem !important;
+            }
+
+            #entourage .script-font {
+                font-size: 1rem !important;
+            }
+
+            .elegant-card {
+                padding: 1.5rem !important;
+            }
+
+            #entourage .grid.grid-cols-1.sm\\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 0.75rem !important;
+            }
+
+            .floral-decoration {
+                width: 60px !important;
+                height: 60px !important;
+            }
+
+            .floral-decoration-medium {
+                width: 80px !important;
+                height: 80px !important;
+            }
+
+            .floral-decoration-large {
+                width: 100px !important;
+                height: 100px !important;
+            }
+
+            /* Finer Details Section */
+            #finer-details {
+                padding: 3rem 0 !important;
+            }
+
+            #finer-details .elegant-card {
+                padding: 1.5rem !important;
+            }
+
+            #finer-details .heading-font {
                 font-size: 1.75rem !important;
             }
 
-            .header-couple {
-                font-size: 0.8rem !important;
-                padding: 0 0.25rem !important;
+            #finer-details .script-font {
+                font-size: 1rem !important;
+            }
+
+            #finer-details .elegant-card>div>div {
+                height: 200px !important;
+            }
+
+            #finer-details .elegant-card:last-child .elegant-card>div {
+                height: 150px !important;
+            }
+
+            /* Wedding Team Section */
+            #coordinators {
+                padding: 3rem 0 !important;
+            }
+
+            #coordinators .heading-font {
+                font-size: 2rem !important;
+            }
+
+            #coordinators .script-font {
+                font-size: 1rem !important;
+            }
+
+            #coordinators .elegant-card {
+                padding: 1.5rem !important;
+            }
+
+            #coordinators .grid.grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+
+            #coordinators .grid.md\\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
             }
         }
 
-        /* Fix for 278px width specifically */
+        @media (max-width: 480px) {
+            .space-y-4>*+* {
+                margin-top: 0.5rem !important;
+            }
+
+            .space-y-3>*+* {
+                margin-top: 0.4rem !important;
+            }
+
+            #entourage {
+                padding: 2rem 1rem !important;
+            }
+
+            #entourage .heading-font {
+                font-size: 1.75rem !important;
+            }
+
+            #entourage .script-font {
+                font-size: 0.9rem !important;
+            }
+
+            .elegant-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            #finer-details {
+                padding: 2rem 1rem !important;
+            }
+
+            #finer-details .elegant-card {
+                padding: 1rem !important;
+            }
+
+            #finer-details .heading-font {
+                font-size: 1.5rem !important;
+            }
+
+            #finer-details .elegant-card>div>div {
+                height: 180px !important;
+            }
+
+            #finer-details .elegant-card:last-child .elegant-card>div {
+                height: 120px !important;
+            }
+
+            #coordinators {
+                padding: 2rem 1rem !important;
+            }
+
+            #coordinators .heading-font {
+                font-size: 1.75rem !important;
+            }
+
+            #coordinators .grid.grid-cols-1.sm\\:grid-cols-2.md\\:grid-cols-4 {
+                grid-template-columns: 1fr !important;
+            }
+
+            #coordinators .elegant-card {
+                padding: 1rem !important;
+            }
+
+            .gallery-container {
+                min-height: 320px;
+                max-width: 440px;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .gallery-container {
+                min-height: 380px;
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .couple-name-wrapper h1 {
+                font-size: 3rem !important;
+            }
+
+            .couple-name-wrapper h1:nth-child(2) {
+                font-size: 3.25rem !important;
+            }
+
+            #coordinators .heading-font {
+                font-size: 1.5rem !important;
+            }
+
+            #coordinators .script-font {
+                font-size: 0.9rem !important;
+            }
+
+            .gallery-container {
+                min-height: 280px;
+                max-width: 350px;
+            }
+
+        }
+
         @media (max-width: 320px) {
             #hero {
                 padding: 0.5rem !important;
@@ -612,12 +956,12 @@
             }
 
             .couple-name-wrapper h1 {
-                font-size: 1.3rem !important;
+                font-size: 3rem !important;
                 margin-bottom: 0.1rem !important;
             }
 
             .couple-name-wrapper h1:nth-child(2) {
-                font-size: 1.5rem !important;
+                font-size: 3.25rem !important;
                 margin: 0.1rem 0 !important;
             }
 
@@ -637,79 +981,7 @@
             .countdown-label {
                 font-size: 0.6rem !important;
             }
-        }
 
-        /* Mobile responsiveness for Entourage section */
-        @media (max-width: 768px) {
-            #entourage {
-                padding-top: 3rem !important;
-                padding-bottom: 3rem !important;
-            }
-
-            #entourage .heading-font {
-                font-size: 2rem !important;
-            }
-
-            #entourage .script-font {
-                font-size: 1rem !important;
-            }
-
-            .elegant-card {
-                padding: 1.5rem !important;
-            }
-
-            /* Make bridesmaids and groomsmen single column on mobile */
-            #entourage .grid.grid-cols-1.sm\\:grid-cols-2 {
-                grid-template-columns: 1fr !important;
-                gap: 0.75rem !important;
-            }
-
-            /* Adjust floral decorations for mobile */
-            .floral-decoration {
-                width: 60px !important;
-                height: 60px !important;
-            }
-
-            .floral-decoration-medium {
-                width: 80px !important;
-                height: 80px !important;
-            }
-
-            .floral-decoration-large {
-                width: 100px !important;
-                height: 100px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #entourage {
-                padding: 2rem 1rem !important;
-            }
-
-            #entourage .heading-font {
-                font-size: 1.75rem !important;
-            }
-
-            #entourage .script-font {
-                font-size: 0.9rem !important;
-            }
-
-            .elegant-card {
-                padding: 1rem !important;
-                margin-bottom: 1rem !important;
-            }
-
-            /* Reduce spacing between items */
-            .space-y-4>*+* {
-                margin-top: 0.5rem !important;
-            }
-
-            .space-y-3>*+* {
-                margin-top: 0.4rem !important;
-            }
-        }
-
-        @media (max-width: 320px) {
             #entourage {
                 padding: 1.5rem 0.75rem !important;
             }
@@ -724,6 +996,43 @@
 
             .elegant-card {
                 padding: 0.75rem !important;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (orientation: landscape) and (max-height: 812px) {
+            .gallery-container {
+                height: 70vh;
+            }
+
+            .gallery-slide {
+                min-height: 350px;
+            }
+        }
+
+        /* Portrait orientation adjustments */
+        @media (orientation: portrait) and (min-height: 812px) {
+            .gallery-container {
+                height: 500px;
+            }
+        }
+
+        /* Minimum size enforcement */
+        @media (max-width: 278px) {
+            .gallery-container {
+                min-height: 250px;
+                max-width: 278px;
+            }
+
+            .gallery-nav {
+                width: 30px;
+                height: 30px;
+                font-size: 0.75rem;
+            }
+
+            .floral-corner {
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
@@ -770,7 +1079,7 @@
             </p>
 
             <p class="script-font text-base sm:text-lg md:text-xl text-[#5a716e] mb-8 sm:mb-12">
-                John &amp; Babes</p>
+                John Christopher &amp; Jhohanna Babes</p>
 
             <!-- Loading indicator -->
             <div class="mt-8">
@@ -802,8 +1111,20 @@
             class="min-h-screen flex items-center justify-center relative overflow-hidden mobile-padding pt-4">
             <div class="floral-bg"></div>
 
-            <!-- Floral decorations (keep same) -->
-            <!-- ... -->
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-large animate-float" style="top: 15%; left: 5%;">
+                <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-medium animate-float"
+                style="bottom: 20%; right: 8%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="top: 25%; right: 10%; animation-delay: 2s;">
+                <img src="images/no_bg/flower-without-stem-white_yellow.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
 
             <div class="text-center px-4 animate-fade-in-up max-w-4xl mx-auto relative z-10 hero-content-wrapper">
                 <div class="floral-divider mb-4 md:mb-8">
@@ -811,9 +1132,9 @@
                 </div>
 
                 <!-- Header couple text - now properly visible -->
-                <div class="header-couple-container mb-4 md:mb-6">
+                <div class="text-content-container px-2">
                     <p
-                        class="header-couple heading-font text-sm md:text-lg lg:text-xl font-light text-[#2c423f] tracking-wide px-2">
+                        class="header-couple script-font text-base md:text-2xl text-[#5a716e] mb-1 md:mb-2 tracking-wider leading-relaxed">
                         By the Grace of God and with the
                         Blessings of our Family
                         <br>
@@ -825,7 +1146,7 @@
                 <!-- Couple name wrapper with names inside -->
                 <div class="couple-name-wrapper my-2 md:my-4">
                     <h1
-                        class="heading-font text-2xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-1 md:mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        class="great-vibes-regular text-2xl md:text-7xl lg:text-8xl font-normal text-[#2c423f] mb-1 md:mb-4 tracking-wide opacity-0 transform translate-y-8">
                         John Christopher
                     </h1>
                     <h1
@@ -833,7 +1154,7 @@
                         <span class="text-[#c8a97e] elegant-script">&amp;</span>
                     </h1>
                     <h1
-                        class="heading-font text-2xl md:text-7xl lg:text-8xl font-light text-[#2c423f] mb-1 md:mb-4 tracking-wide opacity-0 transform translate-y-8">
+                        class="great-vibes-regular text-2xl md:text-7xl lg:text-8xl font-normal text-[#2c423f] mb-1 md:mb-4 tracking-wide opacity-0 transform translate-y-8">
                         Jhohanna Babes
                     </h1>
                 </div>
@@ -909,7 +1230,7 @@
                         <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral divider">
                     </div>
                     <p class="script-font text-2xl md:text-3xl lg:text-4xl text-[#c8a97e] mb-4">
-                        PAJARILLO-BULATAO
+                        <strong>PAJARILLO-BULATAO</strong>
                     </p>
                 </div>
 
@@ -919,7 +1240,7 @@
                         Nuptials
                     </h3>
 
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-8">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-8 animate-scale-in">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Officiating Minister
                         </h4>
@@ -933,7 +1254,7 @@
                 <!-- Parents Section -->
                 <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
                     <!-- Parents of the Bride -->
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center animate-slide-left">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Parents of the Bride
                         </h4>
@@ -945,7 +1266,7 @@
                     </div>
 
                     <!-- Parents of the Groom -->
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center animate-slide-right">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Parents of the Groom
                         </h4>
@@ -959,7 +1280,7 @@
                 </div>
 
                 <!-- Principal Sponsors -->
-                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 md:mb-16">
+                <div class="elegant-card rounded-2xl p-6 mb-2 md:p-8 animate-fade-in-up">
                     <div class="text-center mb-6 md:mb-8">
                         <h3 class="heading-font text-2xl md:text-3xl lg:text-4xl text-[#2c423f]">
                             Principal Sponsors
@@ -1074,7 +1395,7 @@
 
                 <!-- Maid of Honor & Best Man -->
                 <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0 animate-scale-in">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Maid of Honor
                         </h4>
@@ -1082,7 +1403,7 @@
                         </p>
                     </div>
 
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center animate-scale-in">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Best Man
                         </h4>
@@ -1093,7 +1414,7 @@
                 <!-- Bridesmaids & Groomsmen -->
                 <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
                     <!-- Bridesmaids -->
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl mb-6 md:mb-0">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl mb-6 md:mb-0 animate-slide-left">
                         <h4
                             class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6 text-center">
                             Bridesmaids
@@ -1124,7 +1445,7 @@
                     </div>
 
                     <!-- Groomsmen -->
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl animate-slide-right">
                         <h4
                             class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6 text-center">
                             Groomsmen
@@ -1156,14 +1477,14 @@
 
                 <!-- Little Bride & Groom -->
                 <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0 animate-fade-in-up">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Little Bride
                         </h4>
                         <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Daniela Zeph Bulatao</p>
                     </div>
 
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center animate-fade-in-up">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Little Groom
                         </h4>
@@ -1172,7 +1493,7 @@
                 </div>
 
                 <!-- Flower Girls -->
-                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 text-center">
+                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 text-center animate-scale-in">
                     <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                         Flower Girls
                     </h4>
@@ -1185,14 +1506,14 @@
 
                 <!-- Bearers Section 1 -->
                 <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0 animate-slide-left">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Bible Bearer
                         </h4>
                         <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Ryven Klaud Panelo</p>
                     </div>
 
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center animate-slide-right">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Contract Bearer
                         </h4>
@@ -1202,14 +1523,14 @@
 
                 <!-- Bearers Section 2 -->
                 <div class="grid md:grid-cols-2 gap-2 md:gap-8 lg:gap-12 mb-2">
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl text-center mb-6 md:mb-0 animate-scale-in">
                         <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                             Pen Bearer
                         </h4>
                         <p class="script-font text-lg md:text-xl lg:text-2xl text-[#5a716e]">Jayce Ian Tavas</p>
                     </div>
 
-                    <div class="elegant-card p-6 md:p-8 rounded-2xl">
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl animate-fade-in">
                         <h4
                             class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6 text-center">
                             Herald Bearers
@@ -1222,7 +1543,7 @@
                 </div>
 
                 <!-- Little Bridesmaids -->
-                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 text-center">
+                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-2 text-center animate-fade-in-up">
                     <h4 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4 md:mb-6">
                         Little Bridesmaids
                     </h4>
@@ -1235,7 +1556,7 @@
             </div>
         </section>
 
-        <!-- Modal Container (add this to your HTML body) -->
+        <!-- Modal Container -->
         <div id="giftModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
             <!-- Overlay -->
             <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
@@ -1293,61 +1614,248 @@
             </div>
         </div>
 
-        <!-- Photo Gallery Section -->
-        <section id="gallery" class="py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
+        <!-- Photo Gallery Section - FIXED & ENHANCED -->
+        <section id="gallery"
+            class="py-12 md:py-24 px-4 bg-gradient-to-b from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
             <div class="floral-bg"></div>
 
-            <!-- Floral decorations -->
-            <div class="floral-decoration floral-decoration-medium animate-float" style="top: 10%; left: 5%;">
-                <img src="images/no_bg/flower-with-stem-yellow-curve.png" alt="Floral decoration" class="w-full h-full">
+            <!-- Additional floral decorations for more flowers -->
+            <div class="floral-decoration floral-decoration-large animate-float" style="top: 5%; left: 3%;">
+                <img src="images/no_bg/flower-with-stem-red.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-medium animate-float"
+                style="top: 15%; right: 5%; animation-delay: 0.5s;">
+                <img src="images/no_bg/flower-without-stem-orange_red_white.png" alt="Floral decoration"
+                    class="w-full h-full">
             </div>
             <div class="floral-decoration floral-decoration-small animate-float"
-                style="bottom: 10%; right: 5%; animation-delay: 1.5s;">
+                style="bottom: 20%; left: 8%; animation-delay: 1s;">
                 <img src="images/no_bg/flower-without-stem-light_orange.png" alt="Floral decoration"
                     class="w-full h-full">
             </div>
-            <div class="floral-decoration floral-decoration-large animate-float"
-                style="top: 20%; right: 10%; animation-delay: 2s;">
-                <img src="images/no_bg/flower-with-stem-red.png" alt="Floral decoration" class="w-full h-full">
+            <div class="floral-decoration floral-decoration-medium animate-float"
+                style="bottom: 10%; right: 10%; animation-delay: 1.5s;">
+                <img src="images/no_bg/flower-with-stem-yellow-curve.png" alt="Floral decoration" class="w-full h-full">
             </div>
 
             <div class="max-w-6xl mx-auto relative z-10">
-                <h2 class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4">
+                <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl text-center text-[#2c423f] mb-4">
                     Our Story in Pictures
                 </h2>
 
-                <div class="floral-divider my-8">
+                <div class="floral-divider my-6 md:my-8">
                     <img src="images/no_bg/flower-without-stem-red.png" alt="Floral divider">
                 </div>
 
-                <p class="script-font text-center text-[#5a716e] max-w-2xl mx-auto mb-16">
+                <p class="script-font text-center text-[#5a716e] max-w-2xl mx-auto mb-8 md:mb-16 text-base md:text-lg">
                     Capturing the moments that led us to this beautiful day
                 </p>
 
-                <div class="gallery-container elegant-card rounded-2xl overflow-hidden mobile-margin">
-                    <div class="gallery-track" id="galleryTrack">
-                        <div class="gallery-slide"
-                            style="background-image: url('images/no_bg/Untitled design (19).png')">
+                <!-- Updated Gallery Container with fallback images -->
+                <div
+                    class="gallery-container elegant-card rounded-2xl overflow-hidden mx-auto max-w-4xl relative min-h-[300px] sm:min-h-[400px] md:min-h-[500px] w-full">
+                    <!-- Floral Corner Decorations -->
+                    <div class="floral-overlay">
+                        <div class="floral-corner floral-corner-tl">
+                            <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration">
                         </div>
-                        <div class="gallery-slide"
-                            style="background-image: url('images/no_bg/flower-with-stems-red_orange_yellow.png')"></div>
-                        <div class="gallery-slide"
-                            style="background-image: url('images/no_bg/flower-with-stems-purple.png')">
+                        <div class="floral-corner floral-corner-tr">
+                            <img src="images/no_bg/flower-without-stem-white_yellow.png" alt="Floral decoration">
                         </div>
-                        <div class="gallery-slide"
-                            style="background-image: url('images/no_bg/flower-with-stems-yellow.png')">
+                        <div class="floral-corner floral-corner-bl">
+                            <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral decoration">
                         </div>
-                        <div class="gallery-slide"
-                            style="background-image: url('images/no_bg/flower-with-stems-violet.png')">
+                        <div class="floral-corner floral-corner-br">
+                            <img src="images/no_bg/flower-without-stem-bleach_white_light_red.png"
+                                alt="Floral decoration">
                         </div>
                     </div>
+
+                    <!-- Gallery Track -->
+                    <div class="gallery-track" id="galleryTrack">
+                        <!-- Slide 1 -->
+                        <div class="gallery-slide" style="background-image: url('images/1.jpg')">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-black/60 to-transparent text-white z-10">
+                                <h3 class="heading-font text-lg md:text-xl lg:text-2xl">Tethered</h3>
+                                <p class="script-font text-xs md:text-sm lg:text-base">Two souls, one heartbeat,
+                                    infinite peace.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="gallery-slide" style="background-image: url('images/2.jpg')">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-black/60 to-transparent text-white z-10">
+                                <h3 class="heading-font text-lg md:text-xl lg:text-2xl">The architecture of us</h3>
+                                <p class="script-font text-xs md:text-sm lg:text-base">Building a life out of small,
+                                    wagging moments.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="gallery-slide" style="background-image: url('images/3.jpg')">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-black/60 to-transparent text-white z-10">
+                                <h3 class="heading-font text-lg md:text-xl lg:text-2xl">Sanctum</h3>
+                                <p class="script-font text-xs md:text-sm lg:text-base">My favorite place to hide.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="gallery-slide" style="background-image: url('images/4_2.jpg')">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-black/60 to-transparent text-white z-10">
+                                <h3 class="heading-font text-lg md:text-xl lg:text-2xl">Onwards</h3>
+                                <p class="script-font text-xs md:text-sm lg:text-base">To everywhere and anywhere with you.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="gallery-slide" style="background-image: url('images/5.jpg')">
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-black/60 to-transparent text-white z-10">
+                                <h3 class="heading-font text-lg md:text-xl lg:text-2xl">Our forever era</h3>
+                                <p class="script-font text-xs md:text-sm lg:text-base">The best chapters are yet to be written.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
                     <button class="gallery-nav gallery-prev">
                         <i class="fas fa-chevron-left text-[#2c423f]"></i>
                     </button>
                     <button class="gallery-nav gallery-next">
                         <i class="fas fa-chevron-right text-[#2c423f]"></i>
                     </button>
+
+                    <!-- Dots Indicator -->
                     <div class="gallery-dots" id="galleryDots"></div>
+
+                    <!-- Flower counter indicator -->
+                    <div
+                        class="absolute top-3 md:top-4 left-3 md:left-4 z-10 bg-white/80 backdrop-blur-sm px-2 md:px-3 py-1 rounded-full text-xs md:text-sm text-[#2c423f]">
+                        <span id="currentSlide">1</span>/<span id="totalSlides">5</span> Memories
+                    </div>
+                </div>
+
+                <!-- Additional floral decorations below gallery -->
+                <div class="mt-8 md:mt-12 flex justify-center gap-3 md:gap-4">
+                    <div class="floral-decoration floral-decoration-small animate-float">
+                        <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration"
+                            class="w-full h-full">
+                    </div>
+                    <div class="floral-decoration floral-decoration-small animate-float" style="animation-delay: 0.3s;">
+                        <img src="images/no_bg/flower-without-stem-white_yellow.png" alt="Floral decoration"
+                            class="w-full h-full">
+                    </div>
+                    <div class="floral-decoration floral-decoration-small animate-float" style="animation-delay: 0.6s;">
+                        <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral decoration"
+                            class="w-full h-full">
+                    </div>
+                    <div class="floral-decoration floral-decoration-small animate-float" style="animation-delay: 0.9s;">
+                        <img src="images/no_bg/flower-without-stem-bleach_white_light_red.png" alt="Floral decoration"
+                            class="w-full h-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Finer Details Section -->
+        <section id="finer-details"
+            class="py-24 px-4 bg-gradient-to-b from-[#EFCFD4] to-[#FEEBE7] relative mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-medium animate-float" style="top: 10%; left: 5%;">
+                <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 15%; right: 5%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+
+            <div class="max-w-6xl mx-auto relative z-10">
+                <!-- Section Title -->
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl text-[#2c423f] mb-2">
+                        Finer Details
+                    </h2>
+                    <div class="floral-divider my-6 md:my-8">
+                        <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral divider">
+                    </div>
+                </div>
+
+                <!-- Cards Container -->
+                <div class="space-y-6 md:space-y-8">
+                    <!-- Card 1: Unplugged Ceremony -->
+                    <div class="elegant-card rounded-2xl p-4 md:p-6 text-center animate-fade-in-up">
+                        <h3 class="heading-font text-xl md:text-2xl text-[#2c423f] mb-3 md:mb-4">Unplugged Ceremony</h3>
+                        <p class="script-font text-base md:text-lg text-[#5a716e] leading-relaxed">
+                            We have invited a team to help us capture this day, so just be present and keep our ceremony
+                            free just until we say I do.
+                        </p>
+                    </div>
+
+                    <!-- Card 2: A Note for Parents -->
+                    <div class="elegant-card rounded-2xl p-4 md:p-6 text-center animate-slide-left">
+                        <h3 class="heading-font text-xl md:text-2xl text-[#2c423f] mb-3 md:mb-4">A Note for Parents</h3>
+                        <p class="script-font text-base md:text-lg text-[#5a716e] leading-relaxed">
+                            While we love to watch your children run and play, this is an adult only kind of day.
+                        </p>
+                    </div>
+
+                    <!-- Card 3: Attire Guide -->
+                    <div class="elegant-card rounded-2xl p-4 md:p-6 text-center animate-slide-right">
+                        <h3 class="heading-font text-xl md:text-2xl text-[#2c423f] mb-4 md:mb-5">Attire Guide</h3>
+
+                        <p class="script-font text-base md:text-lg text-[#5a716e] mb-6 md:mb-8 leading-relaxed px-2">
+                            Please dress in Strictly Formal attire within our Bright Summer palette, though Ninongs may
+                            wear a Barong Tagalog and Ninangs are welcome to wear a long dress in any color.
+                        </p>
+
+                        <!-- Three Rows Container -->
+                        <div class="space-y-4 md:space-y-6 max-w-4xl mx-auto">
+                            <!-- Row 1: Attire Guide -->
+                            <div class="animate-fade-in-up">
+                                <div class="text-center mb-2 sm:mb-3">
+                                    <h6 class="heading-font text-base sm:text-lg md:text-xl text-[#2c423f]">Formal
+                                        Attire Guide</h6>
+                                </div>
+                                <div class="flex justify-center items-center px-4 sm:px-0">
+                                    <img src="images/attire_g.png" alt="Formal Attire Guide"
+                                        class="w-auto max-w-full h-[120px] sm:h-[160px] md:h-[200px] object-contain mx-auto">
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Color Palette -->
+                            <div class="animate-fade-in-up">
+                                <div class="text-center mb-2 sm:mb-3">
+                                    <h6 class="heading-font text-base sm:text-lg md:text-xl text-[#2c423f]">Bright
+                                        Summer Palette</h6>
+                                </div>
+                                <div class="flex justify-center items-center px-4 sm:px-0">
+                                    <img src="images/palletes.png" alt="Bright Summer Color Palette"
+                                        class="w-auto max-w-full h-[120px] sm:h-[160px] md:h-[200px] object-contain mx-auto">
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Ninong & Ninang Attire -->
+                            <div class="animate-fade-in-up">
+                                <div class="text-center mb-2 sm:mb-3">
+                                    <h6 class="heading-font text-base sm:text-lg md:text-xl text-[#2c423f]">Ninong &
+                                        Ninang Attire</h6>
+                                </div>
+                                <div class="flex justify-center items-center px-4 sm:px-0">
+                                    <img src="images/attire_n.png" alt="Ninong and Ninang Attire"
+                                        class="w-auto max-w-full h-[120px] sm:h-[160px] md:h-[200px] object-contain mx-auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1382,8 +1890,21 @@
                     Join us as we exchange vows and celebrate our union
                 </p>
 
+                <!-- Reminders Card -->
+                <div class="elegant-card rounded-2xl overflow-hidden mb-8 mobile-margin animate-fade-in">
+                    <div class="p-6 md:p-8">
+                        <h3 class="heading-font text-2xl text-[#2c423f] mb-4 flex items-center justify-center">
+                            <i class="fas fa-bell text-[#c8a97e] mr-3"></i>
+                            Reminders
+                        </h3>
+                        <p class="script-font text-lg md:text-xl text-[#5a716e] text-center leading-relaxed">
+                            <strong>Be on Time, Have Fun, and Finish the event</strong>
+                        </p>
+                    </div>
+                </div>
+
                 <!-- Ceremony Details -->
-                <div class="elegant-card rounded-2xl overflow-hidden mb-16 mobile-margin floral-frame">
+                <div class="elegant-card rounded-2xl overflow-hidden mb-16 mobile-margin floral-frame animate-scale-in">
                     <div class="md:flex">
                         <div class="md:w-1/2 p-6 md:p-10">
                             <div class="mb-8 md:mb-10">
@@ -1419,7 +1940,7 @@
                 </div>
 
                 <!-- Reception Details -->
-                <div class="elegant-card rounded-2xl overflow-hidden mb-16 mobile-margin floral-frame">
+                <div class="elegant-card rounded-2xl overflow-hidden mb-16 mobile-margin floral-frame animate-scale-in">
                     <div class="md:flex flex-row-reverse">
                         <div class="md:w-1/2 p-6 md:p-10">
                             <div class="mb-8 md:mb-10">
@@ -1429,7 +1950,7 @@
                                 </h3>
                                 <p class="text-xl text-[#2c423f] mb-1">Sunday, January 4, 2026</p>
                                 <p class="text-lg text-[#5a716e]"></p>
-                                <p class="text-lg text-[#5a716e] mt-4">Adriano’s Events and Venue</p>
+                                <p class="text-lg text-[#5a716e] mt-4">Adriano's Events and Venue</p>
                                 <p class="text-lg text-[#5a716e]">Banding Pozorrubio Pangasinan</p>
                                 <a href="https://maps.app.goo.gl/skMYDgkEVvXA6fwB8" target="_blank"
                                     rel="noopener noreferrer"
@@ -1455,7 +1976,7 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-4 md:gap-8 text-center">
-                    <div class="elegant-card p-4 md:p-8 rounded-2xl">
+                    <div class="elegant-card p-4 md:p-8 rounded-2xl animate-slide-left">
                         <div
                             class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
                             <i class="fas fa-ring text-[#c8a97e] text-lg md:text-2xl"></i>
@@ -1465,7 +1986,7 @@
                             Hall. Please arrive 30 minutes early.</p>
                     </div>
 
-                    <div class="elegant-card p-4 md:p-8 rounded-2xl">
+                    <div class="elegant-card p-4 md:p-8 rounded-2xl animate-fade-in-up">
                         <div
                             class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
                             <i class="fas fa-glass-cheers text-[#c8a97e] text-lg md:text-2xl"></i>
@@ -1475,7 +1996,7 @@
                             drinks, dinner, and celebrations!</p>
                     </div>
 
-                    <div class="elegant-card p-4 md:p-8 rounded-2xl">
+                    <div class="elegant-card p-4 md:p-8 rounded-2xl animate-slide-right">
                         <div
                             class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
                             <i class="fas fa-camera text-[#c8a97e] text-lg md:text-2xl"></i>
@@ -1486,6 +2007,256 @@
                             <strong class="text-[#c8a97e] break-all md:break-words">#BABESFoundHerJOHNuineLove</strong>
                         </p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section id="rsvp" class="px-4 bg-gradient-to-br from-[#faf7f2] to-[#e8f0e6] relative mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-medium animate-float" style="top: 15%; left: 5%;">
+                <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 20%; right: 8%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-without-stem-white_pink.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h2 class="heading-font text-4xl md:text-5xl text-center text-[#2c423f] mb-4">
+                    RSVP
+                </h2>
+
+                <div class="floral-divider my-8">
+                    <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral divider">
+                </div>
+
+                <div class="elegant-card rounded-2xl p-6 md:p-10 mobile-margin floral-frame animate-scale-in">
+                    <div class="text-center">
+                        <p class="script-font text-lg md:text-xl text-[#5a716e] mb-6 leading-relaxed">
+                            As this intimate wedding celebration, we've strictly reserved seats for you! We hope for
+                            your kind
+                            understanding by not bringing plus 1's to our event. Please confirm attendance by messaging
+                            us on
+                            our Facebook account on/or before December 28, 2025.
+                        </p>
+
+                        <div class="floral-divider my-6 lg:my-8">
+                            <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral divider">
+                        </div>
+
+                        <p class="script-font text-lg md:text-xl text-[#5a716e] mb-8 leading-relaxed">
+                            Our Hearts are full and we can't wait to share this joy with the people who matter most.
+                        </p>
+
+                        <h3
+                            class="great-vibes-regular text-4xl md:text-5xl lg:text-6xl font-normal text-[#2c423f] mb-6 tracking-wide">
+                            See you on our Big Day!
+                        </h3>
+
+                        <!-- Facebook Contact Section -->
+                        <div class="mt-10 pt-8 border-t border-[#e4d4c3]">
+                            <h4 class="heading-font text-xl md:text-2xl text-[#2c423f] mb-4">
+                                Contact Us on Facebook
+                            </h4>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-6">
+                                <!-- Groom's Facebook -->
+                                <div class="elegant-card p-4 md:p-6 rounded-xl animate-slide-left">
+                                    <div class="flex flex-col items-center">
+                                        <div
+                                            class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                            <i class="fab fa-facebook-f text-[#c8a97e] text-lg md:text-2xl"></i>
+                                        </div>
+                                        <h5 class="heading-font text-lg md:text-xl text-[#2c423f] mb-2">Groom</h5>
+                                        <p class="script-font text-sm md:text-base text-[#5a716e]">John Christopher
+                                            Pajarillo</p>
+                                        <a href="https://www.facebook.com/christopher.pajarillo.2025" target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="mt-3 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium text-sm md:text-base">
+                                            Message on Facebook
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Bride's Facebook -->
+                                <div class="elegant-card p-4 md:p-6 rounded-xl animate-slide-right">
+                                    <div class="flex flex-col items-center">
+                                        <div
+                                            class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                            <i class="fab fa-facebook-f text-[#c8a97e] text-lg md:text-2xl"></i>
+                                        </div>
+                                        <h5 class="heading-font text-lg md:text-xl text-[#2c423f] mb-2">Bride</h5>
+                                        <p class="script-font text-sm md:text-base text-[#5a716e]">Jhohanna Babes
+                                            Bulatao</p>
+                                        <a href="https://www.facebook.com/jhohannababes.bulatao" target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="mt-3 text-[#c8a97e] hover:text-[#2c423f] transition-colors duration-300 font-medium text-sm md:text-base">
+                                            Message on Facebook
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wedding Team Section -->
+        <section id="coordinators"
+            class="py-12 md:py-20 px-4 bg-gradient-to-b from-[#FEEBE7] to-[#faf7f2] relative mobile-padding">
+            <div class="floral-bg"></div>
+
+            <!-- Floral decorations -->
+            <div class="floral-decoration floral-decoration-medium animate-float" style="top: 10%; left: 5%;">
+                <img src="images/no_bg/flower-with-stem-pink.png" alt="Floral decoration" class="w-full h-full">
+            </div>
+            <div class="floral-decoration floral-decoration-small animate-float"
+                style="bottom: 15%; right: 5%; animation-delay: 1s;">
+                <img src="images/no_bg/flower-without-stem-white_yellow.png" alt="Floral decoration"
+                    class="w-full h-full">
+            </div>
+
+            <div class="max-w-6xl mx-auto relative z-10">
+                <!-- Main Title -->
+                <div class="text-center mb-8 md:mb-12">
+                    <h2 class="heading-font text-3xl md:text-4xl lg:text-5xl text-[#2c423f] mb-2">
+                        Wedding Team
+                    </h2>
+                    <div class="floral-divider my-4 md:my-6">
+                        <img src="images/no_bg/flower-without-stem-light_red_pink.png" alt="Floral divider">
+                    </div>
+                    <p class="script-font text-lg md:text-xl text-[#5a716e] mb-6 max-w-3xl mx-auto">
+                        The wonderful team helping to make our wedding day perfect
+                    </p>
+                </div>
+
+                <!-- Coordinators Section -->
+                <div class="elegant-card rounded-2xl p-6 md:p-8 mb-8 md:mb-12 animate-fade-in-up">
+                    <div class="text-center mb-6 md:mb-8">
+                        <h3 class="heading-font text-2xl md:text-3xl lg:text-4xl text-[#2c423f] mb-2">
+                            Coordinators
+                        </h3>
+                        <div
+                            class="w-16 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto my-4">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
+                        <div class="space-y-2 animate-fade-in">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                <i class="fas fa-users text-[#c8a97e] text-lg md:text-2xl"></i>
+                            </div>
+                            <p class="script-font text-lg md:text-xl text-[#5a716e]">Janet Rante</p>
+                        </div>
+
+                        <div class="space-y-2 animate-fade-in" style="animation-delay: 0.1s;">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                <i class="fas fa-users text-[#c8a97e] text-lg md:text-2xl"></i>
+                            </div>
+                            <p class="script-font text-lg md:text-xl text-[#5a716e]">John Doward Salcedo</p>
+                        </div>
+
+                        <div class="space-y-2 animate-fade-in" style="animation-delay: 0.2s;">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                <i class="fas fa-users text-[#c8a97e] text-lg md:text-2xl"></i>
+                            </div>
+                            <p class="script-font text-lg md:text-xl text-[#5a716e]">Frisa Peña</p>
+                        </div>
+
+                        <div class="space-y-2 animate-fade-in" style="animation-delay: 0.3s;">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                <i class="fas fa-users text-[#c8a97e] text-lg md:text-2xl"></i>
+                            </div>
+                            <p class="script-font text-lg md:text-xl text-[#5a716e]">Chin-Chin Alagos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Team Section -->
+                <div class="grid md:grid-cols-3 gap-2 md:gap-8 mb-8 md:mb-12">
+                    <!-- Singers -->
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl animate-slide-left">
+                        <div class="text-center mb-6">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                <i class="fas fa-microphone text-[#c8a97e] text-lg md:text-2xl"></i>
+                            </div>
+                            <h3 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4">
+                                Singers
+                            </h3>
+                            <div
+                                class="w-12 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto">
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 md:space-y-4 text-center">
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Chelsea Pajarillo</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Shania Caras</p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Erhwelle Jade Casildo
+                            </p>
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Aaron Jhay Oliva</p>
+                        </div>
+                    </div>
+
+                    <!-- Pianist -->
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl animate-fade-in-up">
+                        <div class="text-center mb-6">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                <i class="fas fa-music text-[#c8a97e] text-lg md:text-2xl"></i>
+                            </div>
+                            <h3 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4">
+                                Pianist
+                            </h3>
+                            <div
+                                class="w-12 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto">
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 md:space-y-4 text-center">
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Judith Guerrero</p>
+                        </div>
+                    </div>
+
+                    <!-- Master of Ceremony -->
+                    <div class="elegant-card p-6 md:p-8 rounded-2xl animate-slide-right">
+                        <div class="text-center mb-6">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#e4d4c3] to-[#d8c9b5] flex items-center justify-center">
+                                <i class="fas fa-bullhorn text-[#c8a97e] text-lg md:text-2xl"></i>
+                            </div>
+                            <h3 class="heading-font text-xl md:text-2xl lg:text-3xl text-[#2c423f] mb-4">
+                                Master of Ceremony
+                            </h3>
+                            <div
+                                class="w-12 h-px bg-gradient-to-r from-transparent via-[#c8a97e] to-transparent mx-auto">
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 md:space-y-4 text-center">
+                            <p class="script-font text-base md:text-lg lg:text-xl text-[#5a716e]">Dan Joe Cabanilla</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Note -->
+                <div class="text-center mt-8 md:mt-12">
+                    <div class="floral-divider my-4 md:my-6">
+                        <img src="images/no_bg/flower-without-stem-bleach_white_yellow.png" alt="Floral divider">
+                    </div>
+                    <p class="script-font text-lg md:text-xl text-[#5a716e] max-w-3xl mx-auto italic">
+                        We extend our heartfelt gratitude to each member of our wedding team for helping us create this
+                        beautiful celebration.
+                    </p>
                 </div>
             </div>
         </section>
@@ -1524,7 +2295,7 @@
                     we've provided a GCash option below.
                 </p>
 
-                <div class="elegant-card rounded-2xl p-6 md:p-10 mobile-margin floral-frame">
+                <div class="elegant-card rounded-2xl p-6 md:p-10 mobile-margin floral-frame animate-scale-in">
                     <div class="flex flex-col items-center justify-center">
                         <div class="gcash-logo mb-6">
                             <!-- GCash Logo -->
@@ -1542,7 +2313,6 @@
                                 <div class="absolute inset-0 opacity-30"
                                     style="background-image: url('images/no_bg/flower-without-stem-bleach_white_yellow.png'); background-size: cover;">
                                 </div>
-                                <!-- <img src="images/qr_code.jpg" alt="GCash QR Code" class="w-full h-full object-cover rounded"> -->
                                 <div class="h-64 w-64 overflow-hidden rounded-lg">
                                     <img src="images/qr_code.jpg" alt="GCash QR Code"
                                         class="h-full w-full object-cover scale-125" />
@@ -1604,15 +2374,20 @@
         updateCountdown();
         setInterval(updateCountdown,1000);
 
-        // Gallery Carousel
+        // Gallery Carousel - UPDATED
         const galleryTrack=document.getElementById('galleryTrack');
         const slides=document.querySelectorAll('.gallery-slide');
         const dotsContainer=document.getElementById('galleryDots');
         const prevBtn=document.querySelector('.gallery-prev');
         const nextBtn=document.querySelector('.gallery-next');
+        const currentSlideDisplay=document.getElementById('currentSlide');
+        const totalSlidesDisplay=document.getElementById('totalSlides');
 
         let currentSlide=0;
         const slideCount=slides.length;
+
+        // Set total slides display
+        totalSlidesDisplay.textContent=slideCount;
 
         // Create dots
         slides.forEach((_,index) => {
@@ -1631,6 +2406,9 @@
             document.querySelectorAll('.gallery-dot').forEach((dot,index) => {
                 dot.classList.toggle('active',index===currentSlide);
             });
+
+            // Update current slide display
+            currentSlideDisplay.textContent=currentSlide+1;
         }
 
         function goToSlide(slideIndex) {
@@ -1652,8 +2430,58 @@
         prevBtn.addEventListener('click',prevSlide);
         nextBtn.addEventListener('click',nextSlide);
 
-        // Auto-advance slides
-        setInterval(nextSlide,5000);
+        // Touch swipe support for mobile
+        let startX=0;
+        let endX=0;
+
+        galleryTrack.addEventListener('touchstart',(e) => {
+            startX=e.touches[0].clientX;
+        });
+
+        galleryTrack.addEventListener('touchmove',(e) => {
+            endX=e.touches[0].clientX;
+        });
+
+        galleryTrack.addEventListener('touchend',() => {
+            const threshold=50;
+            const diff=startX-endX;
+
+            if(Math.abs(diff)>threshold) {
+                if(diff>0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown',(e) => {
+            if(e.key==='ArrowLeft') {
+                prevSlide();
+            } else if(e.key==='ArrowRight') {
+                nextSlide();
+            }
+        });
+
+        // Auto-advance slides (only if not hovering)
+        let autoSlideInterval;
+        function startAutoSlide() {
+            autoSlideInterval=setInterval(nextSlide,5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        // Pause auto-slide on hover
+        const galleryContainer=document.querySelector('.gallery-container');
+        galleryContainer.addEventListener('mouseenter',stopAutoSlide);
+        galleryContainer.addEventListener('mouseleave',startAutoSlide);
+
+        // Initialize
+        updateGallery();
+        startAutoSlide();
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1840,6 +2668,70 @@
             if(e.key==='Escape'&&!giftModal.classList.contains('hidden')) {
                 closeModal();
             }
+        });
+
+        // Add this to your existing smooth scrolling code
+        document.querySelectorAll('a[href="#coordinators"]').forEach(anchor => {
+            anchor.addEventListener('click',function(e) {
+                e.preventDefault();
+                const targetElement=document.querySelector('#coordinators');
+
+                if(targetElement) {
+                    const offsetTop=targetElement.getBoundingClientRect().top+window.pageYOffset;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations for cards
+        const observerOptions={
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer=new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const card=entry.target;
+
+                    // Remove existing animation classes
+                    card.classList.remove('animate-slide-left','animate-slide-right','animate-fade-in-up','animate-scale-in','animate-fade-in');
+
+                    // Add appropriate animation based on card position
+                    const rect=card.getBoundingClientRect();
+                    const viewportCenter=window.innerHeight/2;
+
+                    if(rect.top<viewportCenter) {
+                        // Card is in top half of viewport
+                        if(card.classList.contains('elegant-card')) {
+                            card.classList.add('animate-fade-in-up');
+                        }
+                    } else {
+                        // Card is in bottom half of viewport
+                        if(card.classList.contains('elegant-card')) {
+                            // Alternate between left and right animations
+                            const cards=Array.from(document.querySelectorAll('.elegant-card'));
+                            const index=cards.indexOf(card);
+                            if(index%2===0) {
+                                card.classList.add('animate-slide-left');
+                            } else {
+                                card.classList.add('animate-slide-right');
+                            }
+                        }
+                    }
+
+                    // Stop observing after animation
+                    observer.unobserve(card);
+                }
+            });
+        },observerOptions);
+
+        // Observe all cards for scroll animations
+        document.querySelectorAll('.elegant-card').forEach(card => {
+            observer.observe(card);
         });
     </script>
 </body>
